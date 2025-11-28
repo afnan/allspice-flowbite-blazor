@@ -220,7 +220,7 @@ public partial class AccordionItem : FlowbiteComponentBase
         if (!string.IsNullOrEmpty(HeaderHoverColor))
         {
             classes.Add(HeaderHoverColor);
-            classes.Add("focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800");
+            classes.Add("focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-900");
         }
         else
         {
@@ -229,13 +229,13 @@ public partial class AccordionItem : FlowbiteComponentBase
             {
                 case AccordionColor.Primary:
                     classes.Add("hover:bg-primary-50 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-200");
-                    classes.Add("dark:hover:bg-primary-900/20 dark:hover:text-primary-300 dark:focus:ring-primary-800");
+                    classes.Add("dark:hover:bg-primary-900/20 dark:hover:text-primary-300 dark:focus:ring-primary-900");
                     break;
                 case AccordionColor.Gray:
                 case AccordionColor.Default:
                 default:
                     classes.Add("hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200");
-                    classes.Add("dark:hover:bg-gray-800 dark:hover:text-white dark:focus:ring-gray-800");
+                    classes.Add("dark:hover:bg-gray-800 dark:hover:text-white dark:focus:ring-gray-900");
                     break;
             }
         }
@@ -319,7 +319,7 @@ public partial class AccordionItem : FlowbiteComponentBase
         }
         else
         {
-            classes.Add("max-h-0 opacity-0");
+            classes.Add("max-h-0 opacity-0 overflow-hidden");
         }
         
         return string.Join(" ", classes);
@@ -336,35 +336,48 @@ public partial class AccordionItem : FlowbiteComponentBase
             }
             else
             {
-                return "display: none;";
+                return "display: none; height: 0; overflow: hidden;";
             }
         }
         
-        // With animation, ensure no space when closed - use overflow hidden on body
+        // With animation, ensure no space when closed
+        if (!GetIsOpen())
+        {
+            return "height: 0; overflow: hidden;";
+        }
+        
         return string.Empty;
     }
 
     private string GetBodyClasses()
     {
         var classes = new List<string>();
+        var isOpen = GetIsOpen();
         var (isFirst, isLast, _) = GetPosition();
+
+        // When closed, ensure no space is taken
+        if (!isOpen)
+        {
+            classes.Add("h-0 overflow-hidden");
+        }
 
         switch (Style)
         {
             case AccordionStyle.Separated:
-                classes.Add("border border-t-0 border-gray-200 rounded-b-lg dark:border-gray-700");
+                if (isOpen)
+                {
+                    classes.Add("border border-t-0 border-gray-200 rounded-b-lg dark:border-gray-700");
+                }
                 break;
             case AccordionStyle.Flush:
-                classes.Add("border-0 border-b border-gray-200 dark:border-gray-700");
+                if (isOpen)
+                {
+                    classes.Add("border-0 border-b border-gray-200 dark:border-gray-700");
+                }
                 break;
             case AccordionStyle.Default:
             default:
-                if (isLast)
-                {
-                    // Last item: no border on body div itself
-                    // Border will be on content div instead
-                }
-                else
+                if (!isLast && isOpen)
                 {
                     // First and middle items: no side borders, no top border, only bottom border
                     classes.Add("border border-x-0 border-t-0 border-b border-gray-200 dark:border-gray-700");
@@ -383,10 +396,17 @@ public partial class AccordionItem : FlowbiteComponentBase
 
     private string GetContentClasses()
     {
-        var classes = new List<string> { "p-4 md:p-5" };
+        var classes = new List<string>();
+        var isOpen = GetIsOpen();
         var (isFirst, isLast, _) = GetPosition();
 
-        if (Style == AccordionStyle.Default && isLast)
+        // Only apply padding when open
+        if (isOpen)
+        {
+            classes.Add("p-4 md:p-5");
+        }
+
+        if (Style == AccordionStyle.Default && isLast && isOpen)
         {
             // Last item's content div needs top border
             classes.Add("border border-t border-b-0 border-x-0 border-gray-200 dark:border-gray-700");

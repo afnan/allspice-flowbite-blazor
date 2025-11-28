@@ -512,3 +512,6 @@ dotnet-install.sh
 .playwright-mcp/
 verification/
 src/nuget.config
+
+# AI-generated assets (screenshots from conversations)
+assets/
