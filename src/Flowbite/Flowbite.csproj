@@ -13,7 +13,7 @@
     <Description>Flowbite component library for ASP.NET Blazor 8.0, providing a comprehensive set of UI components styled with TailwindCSS.</Description>
     <PackageTags>blazor;components;tailwindcss;flowbite;ui</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/peakflames/flowbite-blazor</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/afnan/allspice-flowbite-blazor</PackageProjectUrl>
     <PackageReadmeFile>nuget.md</PackageReadmeFile>
     
     <!-- Documentation -->

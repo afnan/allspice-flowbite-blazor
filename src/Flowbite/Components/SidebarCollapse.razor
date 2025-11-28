@@ -1,6 +1,7 @@
 
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Web
+@using System.Collections.Generic
 @inherits FlowbiteComponentBase
 
 <li style="list-style-type: none;">
@@ -22,8 +23,8 @@
     </button>
     <ul id="sidebar-collapse-@Id" 
         class="@GetListClasses()"
-        style="list-style-type: none;"
-        hidden="@(!_isOpen)">
+        style="@GetListStyle()"
+        hidden="@(!Animate && !_isOpen)">
         @ChildContent
     </ul>
 </li>
@@ -43,7 +44,47 @@
 
     private string GetButtonClasses() => CombineClasses("flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700");
 
-    private string GetChevronClasses() => CombineClasses($"w-6 h-6 text-gray-500 transition-transform dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white {(_isOpen ? "rotate-180" : "")}");
+    private string GetChevronClasses() => CombineClasses($"w-6 h-6 text-gray-500 transition-transform duration-200 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white {(_isOpen ? "rotate-180" : "")}");
 
-    private string GetListClasses() => CombineClasses("py-2 space-y-2 ps-7");
+    private string GetListClasses()
+    {
+        var classes = new List<string> { "ps-7" }; // Keep left padding constant to prevent left animation
+        
+        if (Animate)
+        {
+            classes.Add("overflow-hidden transition-[max-height,opacity,padding-top,padding-bottom] duration-200 ease-in-out");
+            
+            if (_isOpen)
+            {
+                classes.Add("py-2 space-y-2 max-h-[2000px] opacity-100");
+            }
+            else
+            {
+                classes.Add("max-h-0 opacity-0 py-0 space-y-0");
+            }
+        }
+        else
+        {
+            classes.Add("py-2 space-y-2");
+        }
+        
+        return CombineClasses(string.Join(" ", classes));
+    }
+
+    private string GetListStyle()
+    {
+        var styles = new List<string> { "list-style-type: none;" };
+        
+        if (!Animate && !_isOpen)
+        {
+            styles.Add("display: none;");
+        }
+        else if (Animate && !_isOpen)
+        {
+            // Ensure zero height and padding when collapsed - works with CSS transition
+            styles.Add("max-height: 0; padding-top: 0; padding-bottom: 0;");
+        }
+        
+        return string.Join(" ", styles);
+    }
 }

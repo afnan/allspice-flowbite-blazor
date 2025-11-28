@@ -1,0 +1,215 @@
+@page "/docs/components/skeleton"
+@using Flowbite.Components
+
+<PageTitle>Skeleton - Flowbite Blazor</PageTitle>
+
+<main class="p-6 space-y-4 max-w-4xl">
+    <h2>Skeleton Examples</h2>
+    <p class="text-lg text-gray-500 dark:text-gray-400">
+        The Skeleton component can be used as an alternative loading indicator to the spinner by mimicking the content that will be loaded such as text, images, or video.
+    </p>
+
+    <div class="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <ComponentExample Title="Default Skeleton"
+                          Description="Use this example to show a placeholder when loading text content."
+                          RazorCode=@(@"
+<Skeleton>
+    <div class=""max-w-sm space-y-2.5"">
+        <SkeletonText Width=""w-48"" Height=""h-2.5"" MarginBottom=""mb-4"" />
+        <SkeletonText Width=""max-w-[360px]"" MarginBottom=""mb-2.5"" />
+        <SkeletonText MarginBottom=""mb-2.5"" />
+        <SkeletonText Width=""max-w-[330px]"" MarginBottom=""mb-2.5"" />
+        <SkeletonText Width=""max-w-[300px]"" MarginBottom=""mb-2.5"" />
+        <SkeletonText Width=""max-w-[360px]"" />
+    </div>
+</Skeleton>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Skeleton>
+                    <div class="max-w-sm space-y-2.5">
+                        <SkeletonText Width="w-48" Height="h-2.5" MarginBottom="mb-4" />
+                        <SkeletonText Width="max-w-[360px]" MarginBottom="mb-2.5" />
+                        <SkeletonText MarginBottom="mb-2.5" />
+                        <SkeletonText Width="max-w-[330px]" MarginBottom="mb-2.5" />
+                        <SkeletonText Width="max-w-[300px]" MarginBottom="mb-2.5" />
+                        <SkeletonText Width="max-w-[360px]" />
+                    </div>
+                </Skeleton>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample Title="Image Placeholder"
+                          Description="This example can be used to show a placeholder when loading an image and text content."
+                          RazorCode=@(@"
+<Skeleton>
+    <div class=""space-y-8 md:space-y-0 md:space-x-8 md:flex md:items-center"">
+        <SkeletonImage Width=""w-full"" Height=""h-48"" Class=""sm:w-96"" />
+        <div class=""w-full space-y-2.5"">
+            <SkeletonText Width=""w-48"" Height=""h-2.5"" MarginBottom=""mb-4"" />
+            <SkeletonText Width=""max-w-[480px]"" MarginBottom=""mb-2.5"" />
+            <SkeletonText MarginBottom=""mb-2.5"" />
+            <SkeletonText Width=""max-w-[440px]"" MarginBottom=""mb-2.5"" />
+            <SkeletonText Width=""max-w-[460px]"" MarginBottom=""mb-2.5"" />
+            <SkeletonText Width=""max-w-[360px]"" />
+        </div>
+    </div>
+</Skeleton>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Skeleton>
+                    <div class="space-y-8 md:space-y-0 md:space-x-8 md:flex md:items-center">
+                        <SkeletonImage Width="w-full" Height="h-48" Class="sm:w-96" />
+                        <div class="w-full space-y-2.5">
+                            <SkeletonText Width="w-48" Height="h-2.5" MarginBottom="mb-4" />
+                            <SkeletonText Width="max-w-[480px]" MarginBottom="mb-2.5" />
+                            <SkeletonText MarginBottom="mb-2.5" />
+                            <SkeletonText Width="max-w-[440px]" MarginBottom="mb-2.5" />
+                            <SkeletonText Width="max-w-[460px]" MarginBottom="mb-2.5" />
+                            <SkeletonText Width="max-w-[360px]" />
+                        </div>
+                    </div>
+                </Skeleton>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample Title="Video Placeholder"
+                          Description="Use this example to show a skeleton placeholder when loading video content."
+                          RazorCode=@(@"
+<Skeleton>
+    <SkeletonVideo Width=""max-w-sm"" Height=""h-56"" />
+</Skeleton>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Skeleton>
+                    <SkeletonVideo Width="max-w-sm" Height="h-56" />
+                </Skeleton>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample Title="Text Placeholder"
+                          Description="Use this example to show a placeholder when loading longer paragraphs and headings."
+                          RazorCode=@(@"
+<Skeleton>
+    <div class=""space-y-2.5 max-w-lg"">
+        <div class=""flex items-center w-full"">
+            <SkeletonText Width=""w-32"" Height=""h-2.5"" />
+            <SkeletonText Width=""w-24"" Height=""h-2.5"" Class=""ms-2"" />
+            <SkeletonText Height=""h-2.5"" Class=""ms-2"" />
+        </div>
+        <div class=""flex items-center w-full max-w-[480px]"">
+            <SkeletonText Class=""w-full"" Height=""h-2.5"" />
+            <SkeletonText Class=""ms-2 w-full"" Height=""h-2.5"" />
+            <SkeletonText Width=""w-24"" Height=""h-2.5"" Class=""ms-2"" />
+        </div>
+        <div class=""flex items-center w-full max-w-[400px]"">
+            <SkeletonText Class=""w-full"" Height=""h-2.5"" />
+            <SkeletonText Width=""w-80"" Height=""h-2.5"" Class=""ms-2"" />
+            <SkeletonText Class=""ms-2 w-full"" Height=""h-2.5"" />
+        </div>
+    </div>
+</Skeleton>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Skeleton>
+                    <div class="space-y-2.5 max-w-lg">
+                        <div class="flex items-center w-full">
+                            <SkeletonText Width="w-32" Height="h-2.5" />
+                            <SkeletonText Width="w-24" Height="h-2.5" Class="ms-2" />
+                            <SkeletonText Height="h-2.5" Class="ms-2" />
+                        </div>
+                        <div class="flex items-center w-full max-w-[480px]">
+                            <SkeletonText Class="w-full" Height="h-2.5" />
+                            <SkeletonText Class="ms-2 w-full" Height="h-2.5" />
+                            <SkeletonText Width="w-24" Height="h-2.5" Class="ms-2" />
+                        </div>
+                        <div class="flex items-center w-full max-w-[400px]">
+                            <SkeletonText Class="w-full" Height="h-2.5" />
+                            <SkeletonText Width="w-80" Height="h-2.5" Class="ms-2" />
+                            <SkeletonText Class="ms-2 w-full" Height="h-2.5" />
+                        </div>
+                    </div>
+                </Skeleton>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample Title="Card Placeholder"
+                          Description="Use this example to show a placeholder when loading content inside a card."
+                          RazorCode=@(@"
+<Skeleton>
+    <div class=""max-w-sm p-4 border border-gray-200 rounded-lg shadow-xs md:p-6 dark:border-gray-700"">
+        <SkeletonImage Width=""max-w-sm"" Height=""h-48"" MarginBottom=""mb-4 sm:mb-6"" />
+        <SkeletonText Width=""w-48"" Height=""h-2.5"" MarginBottom=""mb-4"" />
+        <SkeletonText MarginBottom=""mb-2.5"" />
+        <SkeletonText MarginBottom=""mb-2.5"" />
+        <SkeletonText MarginBottom=""mb-4"" />
+        <div class=""flex items-center mt-4"">
+                                <svg class=""w-8 h-8 text-gray-400 dark:text-gray-500 me-3"" aria-hidden=""true"" xmlns=""http://www.w3.org/2000/svg"" width=""24"" height=""24"" fill=""none"" viewBox=""0 0 24 24"">
+                <path stroke=""currentColor"" stroke-linecap=""round"" stroke-linejoin=""round"" stroke-width=""2"" d=""M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z""/>
+            </svg>
+            <div>
+                <SkeletonText Width=""w-32"" Height=""h-2.5"" MarginBottom=""mb-2"" />
+                <SkeletonText Width=""w-48"" Height=""h-2"" />
+            </div>
+        </div>
+    </div>
+</Skeleton>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Skeleton>
+                    <div class="max-w-sm p-4 border border-gray-200 rounded-lg shadow-xs md:p-6 dark:border-gray-700">
+                        <SkeletonImage Width="max-w-sm" Height="h-48" MarginBottom="mb-4 sm:mb-6" />
+                        <SkeletonText Width="w-48" Height="h-2.5" MarginBottom="mb-4" />
+                        <SkeletonText MarginBottom="mb-2.5" />
+                        <SkeletonText MarginBottom="mb-2.5" />
+                        <SkeletonText MarginBottom="mb-4" />
+                        <div class="flex items-center mt-4">
+                            <svg class="w-8 h-8 text-gray-400 dark:text-gray-500 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            </svg>
+                            <div>
+                                <SkeletonText Width="w-32" Height="h-2.5" MarginBottom="mb-2" />
+                                <SkeletonText Width="w-48" Height="h-2" />
+                            </div>
+                        </div>
+                    </div>
+                </Skeleton>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample Title="List Placeholder"
+                          Description="Use this example to show a placeholder when loading a list of items."
+                          RazorCode=@(@"
+<Skeleton>
+    <div class=""max-w-md p-4 border border-gray-200 divide-y divide-gray-200 rounded-lg shadow-xs md:p-6 dark:border-gray-700 dark:divide-gray-700"">
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class=""flex items-center justify-between @(i == 0 ? ""pb-4"" : ""py-4"")"">
+                <div>
+                    <SkeletonText Width=""w-24"" Height=""h-2.5"" MarginBottom=""mb-2.5"" />
+                    <SkeletonText Width=""w-32"" Height=""h-2"" />
+                </div>
+                                <div class=""h-2.5 animate-pulse bg-gray-300 dark:bg-gray-700 rounded-full w-12""></div>
+            </div>
+        }
+    </div>
+</Skeleton>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Skeleton>
+                    <div class="max-w-md p-4 border border-gray-200 divide-y divide-gray-200 rounded-lg shadow-xs md:p-6 dark:border-gray-700 dark:divide-gray-700">
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            <div class="@($"flex items-center justify-between {(i == 0 ? "pb-4" : "py-4")}")">
+                                <div>
+                                    <SkeletonText Width="w-24" Height="h-2.5" MarginBottom="mb-2.5" />
+                                    <SkeletonText Width="w-32" Height="h-2" />
+                                </div>
+                                <div class="h-2.5 animate-pulse bg-gray-300 dark:bg-gray-700 rounded-full w-12"></div>
+                            </div>
+                        }
+                    </div>
+                </Skeleton>
+            </PreviewContent>
+        </ComponentExample>
+    </div>
+</main>

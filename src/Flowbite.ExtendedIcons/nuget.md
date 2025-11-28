@@ -105,7 +105,7 @@ Icons can be customized using standard CSS classes:
 
 ## Documentation
 
-For detailed documentation and examples, visit our [GitHub repository](https://github.com/peakflames/flowbite-blazor).
+For detailed documentation and examples, visit our [GitHub repository](https://github.com/afnan/allspice-flowbite-blazor).
 
 ## License
 

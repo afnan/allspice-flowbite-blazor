@@ -1,8 +1,8 @@
-<project title="Flowbite Blazor" summary="A comprehensive Blazor component library that ports the Flowbite React component library to ASP.NET Blazor 8.0. Built on TailwindCSS, it provides strongly-typed Blazor components that implement Flowbite design patterns while maintaining consistency with the React implementation. The library offers a rich set of accessible, dark-mode compatible components with built-in ARIA support.">
+<project title="Flowbite Blazor" summary="An upgraded and maintained Blazor component library that ports the Flowbite React component library to ASP.NET Blazor 10.0. Built on TailwindCSS v4.1.17 and Flowbite v4.0.1, it provides strongly-typed Blazor components that implement Flowbite design patterns while maintaining consistency with the React implementation. This is an upgraded fork of the original flowbite-blazor repository, updated to the latest .NET, Tailwind CSS, and Flowbite versions. The library offers a rich set of accessible, dark-mode compatible components with built-in ARIA support.">
 
 ## Project Links
 
-- [Github Repository](https://github.com/peakflames/flowbite-blazor)
+- [Github Repository](https://github.com/afnan/allspice-flowbite-blazor)
 - [Documenation Site](https://flowbite-blazor.peakflames.org/docs/components/{{COMPONENT_NAME}})
 
 

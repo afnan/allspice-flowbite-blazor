@@ -13,7 +13,7 @@
     <Description>Extended icon set for Flowbite.Blazor, providing additional SVG icons as Blazor components.</Description>
     <PackageTags>blazor;icons;svg;flowbite;ui</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/peakflames/flowbite-blazor</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/afnan/allspice-flowbite-blazor</PackageProjectUrl>
     <PackageReadmeFile>nuget.md</PackageReadmeFile>
     <PackageIcon>favicon.png</PackageIcon>
     

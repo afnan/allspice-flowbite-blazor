@@ -4,6 +4,9 @@
     Build websites even faster with components on top of Blazor and Tailwind CSS
   </p>
   <p>
+    <a href="https://github.com/afnan/allspice-flowbite-blazor">
+      <img src="https://img.shields.io/github/stars/afnan/allspice-flowbite-blazor?style=social" alt="GitHub stars">
+    </a>
     <a href="https://discord.com/invite/4eeurUVvTy">
       <img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Discord">
     </a>
@@ -25,6 +28,20 @@
 ---
 
 **⚠️ Flowbite Blazor is currently in early development and APIs and packages are likely to change quite often.**
+
+## About This Repository
+
+This is an upgraded and maintained version of Flowbite Blazor, forked from the original [flowbite-blazor](https://github.com/themesberg/flowbite-blazor) repository. This version has been comprehensively updated to work with the latest technologies:
+
+- **.NET** - Updated to .NET 10
+- **Tailwind CSS** - Updated to Tailwind CSS v4.1.17  
+- **Flowbite** - Updated to Flowbite v4.0.1
+
+All components have been tested and updated to ensure compatibility with these latest versions, providing you with a modern, up-to-date Flowbite Blazor experience.
+
+**Repository:** [https://github.com/afnan/allspice-flowbite-blazor](https://github.com/afnan/allspice-flowbite-blazor)
+
+**Original Repository:** [https://github.com/themesberg/flowbite-blazor](https://github.com/themesberg/flowbite-blazor)
 
 # URLs
 

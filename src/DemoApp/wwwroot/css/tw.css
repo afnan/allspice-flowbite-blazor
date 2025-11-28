@@ -95,7 +95,7 @@ main > h2,
 
 /* Exclude accordion h2s from the above rule - must come after */
 .flowbite-accordion h2 {
-    @apply mb-0 text-base font-medium !important;
+    @apply mb-0 text-base font-medium;
 }
 
 .doc-text {

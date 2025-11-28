@@ -68,6 +68,7 @@ public static class DocLayoutSidebarData
                 new() { Title = "Navbar", Href = "/docs/components/navbar" },
                 new() { Title = "QuickGrid", Href = "/docs/components/quickgrid" },
                 new() { Title = "Sidebar", Href = "/docs/components/sidebar" },
+                new() { Title = "Skeleton", Href = "/docs/components/skeleton", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Spinner", Href = "/docs/components/spinner" },
                 new() { Title = "Table", Href = "/docs/components/table"},
                 new() { Title = "Tabs", Href = "/docs/components/tabs" },
