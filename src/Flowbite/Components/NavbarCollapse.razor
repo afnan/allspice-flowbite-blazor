@@ -1,8 +1,7 @@
-
 @inherits FlowbiteComponentBase
 
-<div class="@CombineClasses($"w-full md:block md:w-auto {(!MenuOpen ? "hidden" : "")}")">
-    <ul class="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
+<div class="@GetCollapseClasses()" id="@CollapseId">
+    <ul class="@CombineClasses("font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary")">
         @ChildContent
     </ul>
 </div>
@@ -12,4 +11,24 @@
     private Navbar? ParentNavbar { get; set; }
 
     private bool MenuOpen => ParentNavbar?.MenuOpen ?? false;
+    private string CollapseId => ParentNavbar?.CollapseId ?? "navbar-default";
+
+    private string GetCollapseClasses()
+    {
+        // On mobile: show/hide based on MenuOpen
+        // On desktop (md and above): always show (md:block)
+        // Official Flowbite uses: "hidden w-full md:block md:w-auto"
+        var mobileClass = MenuOpen ? "" : "hidden";
+        return CombineClasses($"{mobileClass} w-full md:block md:w-auto");
+    }
+
+    protected override void OnParametersSet()
+    {
+        // Force re-render when parent state changes
+        if (ParentNavbar != null)
+        {
+            InvokeAsync(StateHasChanged);
+        }
+        base.OnParametersSet();
+    }
 }

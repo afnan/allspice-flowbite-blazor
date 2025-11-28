@@ -1,12 +1,12 @@
 @inherits Flowbite.Base.FlowbiteComponentBase
 
-<li class="relative">
+<li class="@(HasDropdown ? "relative" : "")">
     @if (HasDropdown)
     {
         <button @onclick="ToggleDropdown"
                 type="button"
                 class="@GetLinkClasses()"
-                aria-expanded="@IsDropdownOpen">
+                aria-expanded="@IsDropdownOpen.ToString().ToLower()">
             <span class="flex items-center">
                 @ChildContent
                 <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +19,7 @@
             <div class="@GetDropdownClasses()"
                  role="menu"
                  aria-orientation="vertical">
-                <div class="py-1" role="none">
+                <div class="@GetDropdownContentClasses()" role="none">
                     @DropdownContent
                 </div>
             </div>
@@ -29,6 +29,7 @@
     {
         <a href="@(Disabled ? "#" : Href)"
            class="@GetLinkClasses()"
+           aria-current="@(Active ? "page" : null)"
            @onclick="HandleClick"
            @onclick:preventDefault="Disabled">
             @ChildContent

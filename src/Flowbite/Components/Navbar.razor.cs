@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Flowbite.Base;
+using System.Linq;
 
 namespace Flowbite.Components;
 
@@ -60,6 +61,46 @@ public partial class Navbar : FlowbiteComponentBase
     public bool Border { get; set; }
 
     /// <summary>
+    /// Determines if the navbar should be fixed to the top of the viewport.
+    /// </summary>
+    /// <remarks>
+    /// When set to true, the navbar will be fixed at the top of the page and remain visible when scrolling.
+    /// </remarks>
+    /// <example>
+    /// <code>
+    /// &lt;Navbar Sticky="true"&gt;
+    ///     &lt;!-- Fixed navbar --&gt;
+    /// &lt;/Navbar&gt;
+    /// </code>
+    /// </example>
+    [Parameter]
+    public bool Sticky { get; set; }
+
+    /// <summary>
+    /// Custom background color classes. Default uses Flowbite v4 design tokens (bg-neutral-primary).
+    /// </summary>
+    [Parameter]
+    public string? BackgroundColor { get; set; }
+
+    /// <summary>
+    /// Custom border color classes. Default uses Flowbite v4 design tokens (border-default).
+    /// </summary>
+    [Parameter]
+    public string? BorderColor { get; set; }
+
+    /// <summary>
+    /// Gets or sets the ID for the collapse element (for ARIA controls).
+    /// </summary>
+    [Parameter]
+    public string CollapseId { get; set; } = "navbar-default";
+
+    /// <summary>
+    /// Additional attributes to be applied to the navbar element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    /// <summary>
     /// Gets or sets whether the mobile menu is open.
     /// </summary>
     /// <remarks>
@@ -104,6 +145,33 @@ public partial class Navbar : FlowbiteComponentBase
     public EventCallback<bool> MenuOpenChanged { get; set; }
 
     /// <summary>
+    /// Event callback fired when the navbar menu is collapsed.
+    /// </summary>
+    /// <remarks>
+    /// Equivalent to Flowbite JavaScript's `onCollapse` callback.
+    /// </remarks>
+    [Parameter]
+    public EventCallback OnCollapse { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the navbar menu is expanded.
+    /// </summary>
+    /// <remarks>
+    /// Equivalent to Flowbite JavaScript's `onExpand` callback.
+    /// </remarks>
+    [Parameter]
+    public EventCallback OnExpand { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the navbar menu is toggled.
+    /// </summary>
+    /// <remarks>
+    /// Equivalent to Flowbite JavaScript's `onToggle` callback.
+    /// </remarks>
+    [Parameter]
+    public EventCallback<bool> OnToggle { get; set; }
+
+    /// <summary>
     /// Child content to be rendered inside the navbar.
     /// </summary>
     /// <remarks>
@@ -131,28 +199,81 @@ public partial class Navbar : FlowbiteComponentBase
 
     private string NavbarClasses => CombineClasses(string.Join(" ", new[]
     {
-        "bg-white dark:border-gray-700 dark:bg-gray-800 px-2 py-2.5 rounded sm:px-4 w-full",
-        Rounded ? "rounded" : "",
-        Border ? "border" : ""
-    }).Trim());
+        BackgroundColor ?? "bg-neutral-primary",
+        Sticky ? "fixed w-full z-20 top-0 start-0" : "",
+        Border ? $"border-b {BorderColor ?? "border-default"}" : "",
+        Rounded ? "rounded" : ""
+    }.Where(c => !string.IsNullOrEmpty(c))));
 
     private string ContainerClasses => CombineClasses(string.Join(" ", new[]
     {
-        !Fluid ? "mx-auto" : "",
-        Fluid ? "px-2 sm:px-4 py-2.5" : "",
-        "flex flex-wrap justify-between items-center"
-    }).Trim());
+        Fluid ? "" : "max-w-screen-xl",
+        "flex flex-wrap items-center justify-between",
+        "mx-auto p-4"
+    }.Where(c => !string.IsNullOrEmpty(c))));
 
     protected override void OnInitialized()
     {
-        // Subscribe to our own MenuOpenChanged event
-        MenuOpenChanged = EventCallback.Factory.Create<bool>(this, OnMenuOpenChanged);
         base.OnInitialized();
     }
 
-    private void OnMenuOpenChanged(bool isOpen)
+    /// <summary>
+    /// Expands the navbar menu programmatically.
+    /// Equivalent to Flowbite JavaScript's `collapse.expand()` method.
+    /// </summary>
+    public async Task ExpandAsync()
     {
-        MenuOpen = isOpen;
-        StateHasChanged();
+        if (!MenuOpen)
+        {
+            MenuOpen = true;
+            await MenuOpenChanged.InvokeAsync(true);
+            await OnExpand.InvokeAsync();
+            await OnToggle.InvokeAsync(true);
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    /// <summary>
+    /// Collapses the navbar menu programmatically.
+    /// Equivalent to Flowbite JavaScript's `collapse.collapse()` method.
+    /// </summary>
+    public async Task CollapseAsync()
+    {
+        if (MenuOpen)
+        {
+            MenuOpen = false;
+            await MenuOpenChanged.InvokeAsync(false);
+            await OnCollapse.InvokeAsync();
+            await OnToggle.InvokeAsync(false);
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    /// <summary>
+    /// Toggles the navbar menu programmatically.
+    /// Equivalent to Flowbite JavaScript's `collapse.toggle()` method.
+    /// </summary>
+    public async Task ToggleAsync()
+    {
+        MenuOpen = !MenuOpen;
+        var isOpen = MenuOpen;
+        await MenuOpenChanged.InvokeAsync(isOpen);
+        await OnToggle.InvokeAsync(isOpen);
+        
+        if (isOpen)
+        {
+            await OnExpand.InvokeAsync();
+        }
+        else
+        {
+            await OnCollapse.InvokeAsync();
+        }
+        
+        await InvokeAsync(StateHasChanged);
+    }
+
+    internal async Task HandleMenuToggle()
+    {
+        await ToggleAsync();
     }
 }
