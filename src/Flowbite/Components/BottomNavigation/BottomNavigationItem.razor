@@ -1,0 +1,54 @@
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@inherits FlowbiteComponentBase
+
+@if (!string.IsNullOrEmpty(Href))
+{
+    <a href="@Href"
+       class="@GetItemClasses()"
+       @onclick="HandleClick"
+       @attributes="AdditionalAttributes">
+        @if (Icon != null)
+        {
+            <DynamicComponent Type="@Icon.GetType()" Parameters="@(new Dictionary<string, object>
+            {
+                { "class", GetIconClasses() },
+                { "aria-hidden", true }
+            })" />
+        }
+        @if (!string.IsNullOrEmpty(Label))
+        {
+            <span class="@GetLabelClasses()">@Label</span>
+        }
+        @if (ChildContent != null)
+        {
+            <span class="@GetLabelClasses()">@ChildContent</span>
+        }
+    </a>
+}
+else
+{
+    <button type="button"
+            class="@GetItemClasses()"
+            @onclick="HandleClick"
+            disabled="@Disabled"
+            @attributes="AdditionalAttributes">
+        @if (Icon != null)
+        {
+            <DynamicComponent Type="@Icon.GetType()" Parameters="@(new Dictionary<string, object>
+            {
+                { "class", GetIconClasses() },
+                { "aria-hidden", true }
+            })" />
+        }
+        @if (!string.IsNullOrEmpty(Label))
+        {
+            <span class="@GetLabelClasses()">@Label</span>
+        }
+        @if (ChildContent != null)
+        {
+            <span class="@GetLabelClasses()">@ChildContent</span>
+        }
+    </button>
+}
+

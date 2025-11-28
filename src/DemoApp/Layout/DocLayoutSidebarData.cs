@@ -52,6 +52,7 @@ public static class DocLayoutSidebarData
             {
                 new() { Title = "Accordion", Href = "/docs/components/accordion", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Alert", Href = "/docs/components/alert" },
+                new() { Title = "Bottom Navigation", Href = "/docs/components/bottom-navigation", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Avatar", Href = "/docs/components/avatar" },
                 new() { Title = "Badge", Href = "/docs/components/badge" },
                 new() { Title = "Breadcrumb", Href = "/docs/components/breadcrumb" },
