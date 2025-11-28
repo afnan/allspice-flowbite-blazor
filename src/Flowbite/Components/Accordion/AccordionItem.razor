@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Components
 @inherits FlowbiteComponentBase
 
 @if (Style == AccordionStyle.Separated)
@@ -11,15 +12,26 @@
                     aria-expanded="@GetIsOpen().ToString().ToLower()"
                     aria-controls="@GetBodyId()">
                 <span>@HeaderContent</span>
-            <svg class="@GetIconClasses()" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m5 15 7-7 7 7"/>
-            </svg>
+            @if (Icon != null)
+            {
+                <DynamicComponent Type="@Icon.GetType()" Parameters="@(new Dictionary<string, object>
+                {
+                    { "class", GetIconClasses() },
+                    { "aria-hidden", true }
+                })" />
+            }
+            else
+            {
+                <svg class="@GetIconClasses()" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m5 15 7-7 7 7"/>
+                </svg>
+            }
             </button>
         </h2>
         <div id="@GetBodyId()"
-             class="@GetBodyClasses()"
+             class="@GetBodyClasses() @GetBodyAnimationClasses() overflow-hidden"
              aria-labelledby="@GetHeaderId()"
-             style="@(GetIsOpen() ? "display: block;" : "display: none;")">
+             style="@GetBodyStyle()">
             <div class="@GetContentClasses()">
                 @ChildContent
             </div>
@@ -36,15 +48,26 @@ else
                 aria-expanded="@GetIsOpen().ToString().ToLower()"
                 aria-controls="@GetBodyId()">
             <span>@HeaderContent</span>
-            <svg class="@GetIconClasses()" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m5 15 7-7 7 7"/>
-            </svg>
+            @if (Icon != null)
+            {
+                <DynamicComponent Type="@Icon.GetType()" Parameters="@(new Dictionary<string, object>
+                {
+                    { "class", GetIconClasses() },
+                    { "aria-hidden", true }
+                })" />
+            }
+            else
+            {
+                <svg class="@GetIconClasses()" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m5 15 7-7 7 7"/>
+                </svg>
+            }
         </button>
     </h2>
     <div id="@GetBodyId()"
-         class="@GetBodyClasses()"
+         class="@GetBodyClasses() @GetBodyAnimationClasses() overflow-hidden"
          aria-labelledby="@GetHeaderId()"
-         style="@(GetIsOpen() ? "display: block;" : "display: none;")">
+         style="@GetBodyStyle()">
         <div class="@GetContentClasses()">
             @ChildContent
         </div>

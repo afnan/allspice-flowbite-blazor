@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Flowbite.Base;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -35,6 +36,45 @@ public partial class AccordionItem : FlowbiteComponentBase
     public RenderFragment? ChildContent { get; set; }
 
     /// <summary>
+    /// Optional custom icon to display instead of the default chevron icon.
+    /// </summary>
+    [Parameter]
+    public IconBase? Icon { get; set; }
+
+    /// <summary>
+    /// Custom CSS classes to apply to the header button. These will be merged with the default classes.
+    /// </summary>
+    [Parameter]
+    public string? HeaderClass { get; set; }
+
+    /// <summary>
+    /// Custom CSS classes to apply to the body/content area. These will be merged with the default classes.
+    /// </summary>
+    [Parameter]
+    public string? BodyClass { get; set; }
+
+    /// <summary>
+    /// Custom CSS classes for the header text color. Overrides the default color scheme.
+    /// Example: "text-blue-600 dark:text-blue-400"
+    /// </summary>
+    [Parameter]
+    public string? HeaderTextColor { get; set; }
+
+    /// <summary>
+    /// Custom CSS classes for the header hover state. Overrides the default hover colors.
+    /// Example: "hover:bg-blue-50 hover:text-blue-700"
+    /// </summary>
+    [Parameter]
+    public string? HeaderHoverColor { get; set; }
+
+    /// <summary>
+    /// Custom CSS classes for the header active/open state. Overrides the default active colors.
+    /// Example: "bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-300"
+    /// </summary>
+    [Parameter]
+    public string? HeaderActiveColor { get; set; }
+
+    /// <summary>
     /// Whether this item is open by default (uncontrolled mode).
     /// </summary>
     [Parameter]
@@ -60,6 +100,7 @@ public partial class AccordionItem : FlowbiteComponentBase
 
     private AccordionStyle Style => _context?.Style ?? AccordionStyle.Default;
     private AccordionColor Color => _context?.Color ?? AccordionColor.Default;
+    private bool Animate => _context?.Animate ?? true;
 
     private string GetItemId() => _itemId ?? string.Empty;
     private bool GetIsOpen() => _context?.IsItemOpen(GetItemId()) ?? DefaultOpen;
@@ -151,11 +192,53 @@ public partial class AccordionItem : FlowbiteComponentBase
         var classes = new List<string>
         {
             "flex items-center justify-between w-full p-5 font-medium rtl:text-right",
-            "text-gray-500 dark:text-gray-400",
-            "hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200",
-            "dark:hover:bg-gray-800 dark:hover:text-white dark:focus:ring-gray-800",
             "gap-3 transition-colors"
         };
+
+        // Apply custom colors if provided, otherwise use color enum
+        if (!string.IsNullOrEmpty(HeaderTextColor))
+        {
+            classes.Add(HeaderTextColor);
+        }
+        else
+        {
+            // Apply color variants from enum
+            switch (Color)
+            {
+                case AccordionColor.Primary:
+                    classes.Add("text-gray-500 dark:text-gray-400");
+                    break;
+                case AccordionColor.Gray:
+                case AccordionColor.Default:
+                default:
+                    classes.Add("text-gray-500 dark:text-gray-400");
+                    break;
+            }
+        }
+
+        // Apply custom hover colors if provided
+        if (!string.IsNullOrEmpty(HeaderHoverColor))
+        {
+            classes.Add(HeaderHoverColor);
+            classes.Add("focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-800");
+        }
+        else
+        {
+            // Apply color variants from enum
+            switch (Color)
+            {
+                case AccordionColor.Primary:
+                    classes.Add("hover:bg-primary-50 hover:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-200");
+                    classes.Add("dark:hover:bg-primary-900/20 dark:hover:text-primary-300 dark:focus:ring-primary-800");
+                    break;
+                case AccordionColor.Gray:
+                case AccordionColor.Default:
+                default:
+                    classes.Add("hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200");
+                    classes.Add("dark:hover:bg-gray-800 dark:hover:text-white dark:focus:ring-gray-800");
+                    break;
+            }
+        }
 
         var (isFirst, isLast, _) = GetPosition();
 
@@ -188,12 +271,77 @@ public partial class AccordionItem : FlowbiteComponentBase
         }
 
         // Add active state classes
-        if (_isOpen)
+        if (GetIsOpen())
         {
-            classes.Add("text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800");
+            if (!string.IsNullOrEmpty(HeaderActiveColor))
+            {
+                classes.Add(HeaderActiveColor);
+            }
+            else
+            {
+                // Apply color variants from enum
+                switch (Color)
+                {
+                    case AccordionColor.Primary:
+                        classes.Add("text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/20");
+                        break;
+                    case AccordionColor.Gray:
+                    case AccordionColor.Default:
+                    default:
+                        classes.Add("text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800");
+                        break;
+                }
+            }
+        }
+
+        // Add custom header classes if provided
+        if (!string.IsNullOrEmpty(HeaderClass))
+        {
+            classes.Add(HeaderClass);
         }
 
         return CombineClasses(string.Join(" ", classes));
+    }
+
+    private string GetBodyAnimationClasses()
+    {
+        if (!Animate)
+        {
+            // No animation - use simple display toggle
+            return string.Empty;
+        }
+
+        var classes = new List<string> { "transition-all duration-300 ease-in-out" };
+        
+        if (GetIsOpen())
+        {
+            classes.Add("max-h-[2000px] opacity-100");
+        }
+        else
+        {
+            classes.Add("max-h-0 opacity-0");
+        }
+        
+        return string.Join(" ", classes);
+    }
+
+    private string GetBodyStyle()
+    {
+        if (!Animate)
+        {
+            // No animation - use simple display toggle
+            if (GetIsOpen())
+            {
+                return "display: block;";
+            }
+            else
+            {
+                return "display: none;";
+            }
+        }
+        
+        // With animation, ensure no space when closed - use overflow hidden on body
+        return string.Empty;
     }
 
     private string GetBodyClasses()
@@ -224,6 +372,12 @@ public partial class AccordionItem : FlowbiteComponentBase
                 break;
         }
 
+        // Add custom body classes if provided
+        if (!string.IsNullOrEmpty(BodyClass))
+        {
+            classes.Add(BodyClass);
+        }
+
         return string.Join(" ", classes);
     }
 
@@ -244,6 +398,11 @@ public partial class AccordionItem : FlowbiteComponentBase
     private string GetIconClasses()
     {
         var classes = new List<string> { "w-5 h-5 shrink-0" };
+        
+        if (Animate)
+        {
+            classes.Add("transition-transform duration-200");
+        }
         
         if (_isOpen)
         {

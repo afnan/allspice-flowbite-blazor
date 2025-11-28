@@ -23,6 +23,11 @@ public class AccordionContext
     public AccordionColor Color { get; set; } = AccordionColor.Default;
 
     /// <summary>
+    /// Whether to enable smooth animations for expand/collapse.
+    /// </summary>
+    public bool Animate { get; set; } = true;
+
+    /// <summary>
     /// Dictionary to track which items are open by their ID.
     /// </summary>
     private readonly HashSet<string> _openItems = new();

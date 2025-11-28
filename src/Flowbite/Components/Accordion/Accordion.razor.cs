@@ -29,6 +29,12 @@ public partial class Accordion : FlowbiteComponentBase
     public AccordionColor Color { get; set; } = AccordionColor.Default;
 
     /// <summary>
+    /// Whether to enable smooth animations for expand/collapse. Default is true.
+    /// </summary>
+    [Parameter]
+    public bool Animate { get; set; } = true;
+
+    /// <summary>
     /// Child content containing AccordionItem components.
     /// </summary>
     [Parameter]
@@ -65,6 +71,7 @@ public partial class Accordion : FlowbiteComponentBase
             Mode = Mode,
             Style = Style,
             Color = Color,
+            Animate = Animate,
             OnItemOpened = OnItemOpened,
             OnItemClosed = OnItemClosed,
             OnItemToggled = OnItemToggled
@@ -78,6 +85,7 @@ public partial class Accordion : FlowbiteComponentBase
             _context.Mode = Mode;
             _context.Style = Style;
             _context.Color = Color;
+            _context.Animate = Animate;
             _context.OnItemOpened = OnItemOpened;
             _context.OnItemClosed = OnItemClosed;
             _context.OnItemToggled = OnItemToggled;

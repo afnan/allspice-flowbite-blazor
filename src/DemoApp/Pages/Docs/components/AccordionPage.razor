@@ -1,6 +1,7 @@
 @page "/docs/components/accordion"
 @layout DocLayout
 @using Flowbite.Components.Accordion
+@using Flowbite.Icons
 @using DemoApp.Components
 
 <PageTitle>Accordion - Flowbite Blazor</PageTitle>
@@ -279,6 +280,365 @@
                     </ChildContent>
                 </AccordionItem>
             </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Color Variants" 
+            Description="Apply different color schemes to accordions. The Primary color variant uses primary colors for hover and active states."
+            RazorCode="@(
+@"<div class=""space-y-4"">
+    <!-- Primary Color -->
+    <Accordion Color=""AccordionColor.Primary"">
+        <AccordionItem>
+            <HeaderContent>
+                <span>Primary Color Accordion</span>
+            </HeaderContent>
+            <ChildContent>
+                <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                    This accordion uses the primary color scheme with blue tones.
+                </p>
+            </ChildContent>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderContent>
+                <span>Another Primary Item</span>
+            </HeaderContent>
+            <ChildContent>
+                <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                    Notice the primary color on hover and when open.
+                </p>
+            </ChildContent>
+        </AccordionItem>
+    </Accordion>
+
+    <!-- Gray Color -->
+    <Accordion Color=""AccordionColor.Gray"">
+        <AccordionItem>
+            <HeaderContent>
+                <span>Gray Color Accordion</span>
+            </HeaderContent>
+            <ChildContent>
+                <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                    This accordion uses the gray color scheme.
+                </p>
+            </ChildContent>
+        </AccordionItem>
+    </Accordion>
+</div>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-4">
+                    <Accordion Color="AccordionColor.Primary">
+                        <AccordionItem>
+                            <HeaderContent>
+                                <span>Primary Color Accordion</span>
+                            </HeaderContent>
+                            <ChildContent>
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                    This accordion uses the primary color scheme with blue tones.
+                                </p>
+                            </ChildContent>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <HeaderContent>
+                                <span>Another Primary Item</span>
+                            </HeaderContent>
+                            <ChildContent>
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                    Notice the primary color on hover and when open.
+                                </p>
+                            </ChildContent>
+                        </AccordionItem>
+                    </Accordion>
+
+                    <Accordion Color="AccordionColor.Gray">
+                        <AccordionItem>
+                            <HeaderContent>
+                                <span>Gray Color Accordion</span>
+                            </HeaderContent>
+                            <ChildContent>
+                                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                    This accordion uses the gray color scheme.
+                                </p>
+                            </ChildContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Custom Icons" 
+            Description="Use custom icons instead of the default chevron. Icons will automatically rotate when the accordion opens."
+            RazorCode="@(
+@"@using Flowbite.Icons
+
+<Accordion>
+    <AccordionItem Icon=""@(new ChevronDownIcon())"">
+        <HeaderContent>
+            <span>Custom Chevron Icon</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                This accordion uses a custom ChevronDownIcon.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem Icon=""@(new ArrowDownIcon())"">
+        <HeaderContent>
+            <span>Custom Arrow Icon</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                This accordion uses an ArrowDownIcon instead.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem Icon=""@(new PlusIcon())"">
+        <HeaderContent>
+            <span>Custom Plus Icon</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                You can use any IconBase icon. The icon will rotate when opened.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion>
+                    <AccordionItem Icon="@(new ChevronDownIcon())">
+                        <HeaderContent>
+                            <span>Custom Chevron Icon</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                This accordion uses a custom ChevronDownIcon.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                    <AccordionItem Icon="@(new ArrowDownIcon())">
+                        <HeaderContent>
+                            <span>Custom Arrow Icon</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                This accordion uses an ArrowDownIcon instead.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                    <AccordionItem Icon="@(new PlusIcon())">
+                        <HeaderContent>
+                            <span>Custom Plus Icon</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                You can use any IconBase icon. The icon will rotate when opened.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Smooth Animations" 
+            Description="Accordions include smooth animations for expand/collapse (300ms) and icon rotation (200ms). Animations are enabled by default but can be disabled."
+            RazorCode="@(
+@"<Accordion>
+    <AccordionItem>
+        <HeaderContent>
+            <span>Animated Accordion Item</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Notice the smooth animation when opening and closing. The content expands/collapses with a 300ms transition, and the icon rotates with a 200ms transition.
+            </p>
+            <p class=""text-gray-500 dark:text-gray-400"">
+                Animations are automatically enabled - no configuration needed!
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem DefaultOpen=""true"">
+        <HeaderContent>
+            <span>Pre-opened Item</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                This item starts open. Click to see the smooth collapse animation.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion>
+                    <AccordionItem>
+                        <HeaderContent>
+                            <span>Animated Accordion Item</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                Notice the smooth animation when opening and closing. The content expands/collapses with a 300ms transition, and the icon rotates with a 200ms transition.
+                            </p>
+                            <p class="text-gray-500 dark:text-gray-400">
+                                Animations are automatically enabled - no configuration needed!
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                    <AccordionItem DefaultOpen="true">
+                        <HeaderContent>
+                            <span>Pre-opened Item</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                This item starts open. Click to see the smooth collapse animation.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Disable Animations" 
+            Description="Set Animate='false' to disable smooth animations for instant expand/collapse. Useful for performance-critical scenarios."
+            RazorCode="@(
+@"<Accordion Animate=""false"">
+    <AccordionItem>
+        <HeaderContent>
+            <span>No Animation Accordion</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                This accordion has animations disabled. It will expand/collapse instantly without transitions.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem>
+        <HeaderContent>
+            <span>Another Item</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Notice the instant toggle without smooth transitions.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion Animate="false">
+                    <AccordionItem>
+                        <HeaderContent>
+                            <span>No Animation Accordion</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                This accordion has animations disabled. It will expand/collapse instantly without transitions.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <HeaderContent>
+                            <span>Another Item</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                Notice the instant toggle without smooth transitions.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Custom Styling" 
+            Description="Apply custom CSS classes to accordion items for complete styling control. Override colors, hover states, and active states with your own classes."
+            RazorCode="@(
+@"<Accordion>
+    <AccordionItem HeaderTextColor=""text-blue-600 dark:text-blue-400""
+                   HeaderHoverColor=""hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/20 dark:hover:text-blue-300""
+                   HeaderActiveColor=""bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-300"">
+        <HeaderContent>
+            <span>Custom Blue Styling</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                This accordion uses custom blue colors instead of the default gray or primary colors.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem HeaderTextColor=""text-purple-600 dark:text-purple-400""
+                   HeaderHoverColor=""hover:bg-purple-50 hover:text-purple-700 dark:hover:bg-purple-900/20 dark:hover:text-purple-300""
+                   HeaderActiveColor=""bg-purple-100 text-purple-900 dark:bg-purple-900/20 dark:text-purple-300""
+                   HeaderClass=""font-bold""
+                   BodyClass=""bg-purple-50/50 dark:bg-purple-900/10"">
+        <HeaderContent>
+            <span>Custom Purple with Additional Classes</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                This item has custom purple colors plus additional header and body classes.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem HeaderClass=""border-2 border-green-500 rounded-lg""
+                   BodyClass=""bg-green-50 dark:bg-green-900/10"">
+        <HeaderContent>
+            <span>Custom Border and Background</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Use HeaderClass and BodyClass for complete styling flexibility.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion>
+                    <AccordionItem HeaderTextColor="text-blue-600 dark:text-blue-400"
+                                   HeaderHoverColor="hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/20 dark:hover:text-blue-300"
+                                   HeaderActiveColor="bg-blue-100 text-blue-900 dark:bg-blue-900/20 dark:text-blue-300">
+                        <HeaderContent>
+                            <span>Custom Blue Styling</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                This accordion uses custom blue colors instead of the default gray or primary colors.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                    <AccordionItem HeaderTextColor="text-purple-600 dark:text-purple-400"
+                                   HeaderHoverColor="hover:bg-purple-50 hover:text-purple-700 dark:hover:bg-purple-900/20 dark:hover:text-purple-300"
+                                   HeaderActiveColor="bg-purple-100 text-purple-900 dark:bg-purple-900/20 dark:text-purple-300"
+                                   HeaderClass="font-bold"
+                                   BodyClass="bg-purple-50/50 dark:bg-purple-900/10">
+                        <HeaderContent>
+                            <span>Custom Purple with Additional Classes</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                This item has custom purple colors plus additional header and body classes.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                    <AccordionItem HeaderClass="border-2 border-green-500 rounded-lg"
+                                   BodyClass="bg-green-50 dark:bg-green-900/10">
+                        <HeaderContent>
+                            <span>Custom Border and Background</span>
+                        </HeaderContent>
+                        <ChildContent>
+                            <p class="mb-2 text-gray-500 dark:text-gray-400">
+                                Use HeaderClass and BodyClass for complete styling flexibility.
+                            </p>
+                        </ChildContent>
+                    </AccordionItem>
+                </Accordion>
             </PreviewContent>
         </ComponentExample>
     </div>
