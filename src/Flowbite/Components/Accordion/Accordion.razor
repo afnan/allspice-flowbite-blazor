@@ -1,0 +1,8 @@
+@inherits FlowbiteComponentBase
+
+<div class="@GetAccordionClasses()" @attributes="AdditionalAttributes">
+    <CascadingValue Value="@_context" IsFixed="false">
+        @ChildContent
+    </CascadingValue>
+</div>
+

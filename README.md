@@ -28,7 +28,7 @@
 
 # URLs
 
-- Peview `main` banch deployment: <https://flowbite-blazor.org/>
+- Preview `main` branch deployment: <https://flowbite-blazor.org/>
 - Preview `develop` branch deployment: <https://develop.flowbite-blazor-8s8.pages.dev/>
 
 ## Flowbite Assembly

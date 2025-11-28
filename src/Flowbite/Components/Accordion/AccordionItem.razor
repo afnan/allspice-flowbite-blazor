@@ -1,0 +1,53 @@
+@inherits FlowbiteComponentBase
+
+@if (Style == AccordionStyle.Separated)
+{
+    <div class="@GetItemClasses()" @attributes="AdditionalAttributes">
+        <h2 id="@GetHeaderId()">
+            <button type="button"
+                    class="@GetHeaderClasses()"
+                    @onclick="HandleToggle"
+                    @onkeydown="HandleKeyDown"
+                    aria-expanded="@GetIsOpen().ToString().ToLower()"
+                    aria-controls="@GetBodyId()">
+                <span>@HeaderContent</span>
+            <svg class="@GetIconClasses()" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 15 7-7 7 7"/>
+            </svg>
+            </button>
+        </h2>
+        <div id="@GetBodyId()"
+             class="@GetBodyClasses()"
+             aria-labelledby="@GetHeaderId()"
+             style="@(GetIsOpen() ? "display: block;" : "display: none;")">
+            <div class="@GetContentClasses()">
+                @ChildContent
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h2 id="@GetHeaderId()">
+        <button type="button"
+                class="@GetHeaderClasses()"
+                @onclick="HandleToggle"
+                @onkeydown="HandleKeyDown"
+                aria-expanded="@GetIsOpen().ToString().ToLower()"
+                aria-controls="@GetBodyId()">
+            <span>@HeaderContent</span>
+            <svg class="@GetIconClasses()" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 15 7-7 7 7"/>
+            </svg>
+        </button>
+    </h2>
+    <div id="@GetBodyId()"
+         class="@GetBodyClasses()"
+         aria-labelledby="@GetHeaderId()"
+         style="@(GetIsOpen() ? "display: block;" : "display: none;")">
+        <div class="@GetContentClasses()">
+            @ChildContent
+        </div>
+    </div>
+}
+

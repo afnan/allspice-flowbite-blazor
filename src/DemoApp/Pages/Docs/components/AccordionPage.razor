@@ -1,0 +1,286 @@
+@page "/docs/components/accordion"
+@layout DocLayout
+@using Flowbite.Components.Accordion
+@using DemoApp.Components
+
+<PageTitle>Accordion - Flowbite Blazor</PageTitle>
+
+<main class="p-6 space-y-4 max-w-4xl">
+    <h1 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Accordion</h1>
+    <p class="mb-8 text-gray-500 dark:text-gray-400">
+        Use the accordion component to show hidden information based on the collapse and expand state of child elements.
+    </p>
+
+    <div class="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <ComponentExample 
+            Title="Default Accordion (Collapse Mode)" 
+            Description="Only one item can be open at a time."
+            RazorCode="@(
+@"<Accordion Mode=""AccordionMode.Collapse"">
+    <AccordionItem DefaultOpen=""true"">
+        <HeaderContent>
+            <span>What is Flowbite?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.
+            </p>
+            <p class=""text-gray-500 dark:text-gray-400"">
+                Check out this guide to learn how to get started and start developing websites even faster with components on top of Tailwind CSS.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem>
+        <HeaderContent>
+            <span>Is there a Figma file available?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.
+            </p>
+            <p class=""text-gray-500 dark:text-gray-400"">
+                Check out the Figma design system based on the utility classes from Tailwind CSS and components from Flowbite.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem>
+        <HeaderContent>
+            <span>What are the differences between Flowbite and Tailwind UI?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.
+            </p>
+            <p class=""text-gray-500 dark:text-gray-400"">
+                However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion Mode="AccordionMode.Collapse">
+                <AccordionItem DefaultOpen="true">
+                    <HeaderContent>
+                        <span>What is Flowbite?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            Check out this guide to learn how to get started and start developing websites even faster with components on top of Tailwind CSS.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>Is there a Figma file available?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            Check out the Figma design system based on the utility classes from Tailwind CSS and components from Flowbite.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>What are the differences between Flowbite and Tailwind UI?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.
+                        </p>
+                        <p class="text-gray-500 dark:text-gray-400">
+                            However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+            </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Always Open Mode" 
+            Description="Multiple items can be open simultaneously."
+            RazorCode="@(
+@"<Accordion Mode=""AccordionMode.AlwaysOpen"">
+    <AccordionItem DefaultOpen=""true"">
+        <HeaderContent>
+            <span>What is Flowbite?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Flowbite is an open-source library of interactive components built on top of Tailwind CSS.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem DefaultOpen=""true"">
+        <HeaderContent>
+            <span>Is there a Figma file available?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Yes, Flowbite has a Figma design system available.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem>
+        <HeaderContent>
+            <span>What are the differences between Flowbite and Tailwind UI?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                The main difference is that Flowbite is open source under the MIT license.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion Mode="AccordionMode.AlwaysOpen">
+                <AccordionItem DefaultOpen="true">
+                    <HeaderContent>
+                        <span>What is Flowbite?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Flowbite is an open-source library of interactive components built on top of Tailwind CSS.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+                <AccordionItem DefaultOpen="true">
+                    <HeaderContent>
+                        <span>Is there a Figma file available?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Yes, Flowbite has a Figma design system available.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>What are the differences between Flowbite and Tailwind UI?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            The main difference is that Flowbite is open source under the MIT license.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+            </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Separated Cards Style" 
+            Description="Each item appears as a separate card."
+            RazorCode="@(
+@"<Accordion Mode=""AccordionMode.Collapse"" Style=""AccordionStyle.Separated"">
+    <AccordionItem>
+        <HeaderContent>
+            <span>What is Flowbite?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Flowbite is an open-source library of interactive components built on top of Tailwind CSS.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem>
+        <HeaderContent>
+            <span>Is there a Figma file available?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Yes, Flowbite has a Figma design system available.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion Mode="AccordionMode.Collapse" Style="AccordionStyle.Separated">
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>What is Flowbite?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Flowbite is an open-source library of interactive components built on top of Tailwind CSS.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>Is there a Figma file available?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Yes, Flowbite has a Figma design system available.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+            </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+
+        <ComponentExample 
+            Title="Flush Style" 
+            Description="No borders or rounded corners."
+            RazorCode="@(
+@"<Accordion Mode=""AccordionMode.Collapse"" Style=""AccordionStyle.Flush"">
+    <AccordionItem>
+        <HeaderContent>
+            <span>What is Flowbite?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Flowbite is an open-source library of interactive components built on top of Tailwind CSS.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+    <AccordionItem>
+        <HeaderContent>
+            <span>Is there a Figma file available?</span>
+        </HeaderContent>
+        <ChildContent>
+            <p class=""mb-2 text-gray-500 dark:text-gray-400"">
+                Yes, Flowbite has a Figma design system available.
+            </p>
+        </ChildContent>
+    </AccordionItem>
+</Accordion>")"
+            SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Accordion Mode="AccordionMode.Collapse" Style="AccordionStyle.Flush">
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>What is Flowbite?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Flowbite is an open-source library of interactive components built on top of Tailwind CSS.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+                <AccordionItem>
+                    <HeaderContent>
+                        <span>Is there a Figma file available?</span>
+                    </HeaderContent>
+                    <ChildContent>
+                        <p class="mb-2 text-gray-500 dark:text-gray-400">
+                            Yes, Flowbite has a Figma design system available.
+                        </p>
+                    </ChildContent>
+                </AccordionItem>
+            </Accordion>
+            </PreviewContent>
+        </ComponentExample>
+    </div>
+</main>
+

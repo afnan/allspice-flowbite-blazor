@@ -50,6 +50,7 @@ public static class DocLayoutSidebarData
             Title = "Components",
             Items = new List<DocLayoutSidebarItem>
             {
+                new() { Title = "Accordion", Href = "/docs/components/accordion", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Alert", Href = "/docs/components/alert" },
                 new() { Title = "Avatar", Href = "/docs/components/avatar" },
                 new() { Title = "Badge", Href = "/docs/components/badge" },
