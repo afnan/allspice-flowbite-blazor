@@ -7,10 +7,10 @@
     
     <!-- Package Metadata -->
     <PackageId>AllSpice.Flowbite.Blazor</PackageId>
-    <Version>0.1.3-beta</Version>
-    <Authors>Todd Schavey</Authors>
-    <Company>PeakFlames</Company>
-    <Description>Flowbite component library for ASP.NET Blazor 8.0, providing a comprehensive set of UI components styled with TailwindCSS.</Description>
+    <Version>0.2.0-beta</Version>
+    <Authors>Afnan Bashir</Authors>
+    <Company>AllSpice Technologies</Company>
+    <Description>Flowbite component library for ASP.NET Blazor 10.0, providing a comprehensive set of UI components styled with TailwindCSS.</Description>
     <PackageTags>blazor;components;tailwindcss;flowbite;ui</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/afnan/allspice-flowbite-blazor</PackageProjectUrl>
