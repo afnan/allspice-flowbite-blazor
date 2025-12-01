@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     
     <!-- Package Metadata -->
-    <PackageId>Flowbite.ExtendedIcons</PackageId>
+    <PackageId>AllSpice.Flowbite.Blazor.ExtendedIcons</PackageId>
     <Version>0.0.5-alpha</Version>
     <Authors>Todd Schavey</Authors>
     <Company>PeakFlames</Company>

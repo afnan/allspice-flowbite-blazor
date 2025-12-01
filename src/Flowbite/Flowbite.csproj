@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     
     <!-- Package Metadata -->
-    <PackageId>Flowbite</PackageId>
+    <PackageId>AllSpice.Flowbite.Blazor</PackageId>
     <Version>0.1.3-beta</Version>
     <Authors>Todd Schavey</Authors>
     <Company>PeakFlames</Company>

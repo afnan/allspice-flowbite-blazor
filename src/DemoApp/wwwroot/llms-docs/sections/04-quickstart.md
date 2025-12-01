@@ -41,7 +41,7 @@ The sections below provide the exact details.
 # pwd is the {{PROJECT_DIR_ROOT}}
 dotnet new blazorwasm --empty -o {{PROJECT_NAME}}
 cd {{PROJECT_NAME}}
-dotnet add package Flowbite --prerelease
+dotnet add package AllSpice.Flowbite.Blazor --prerelease
 dotnet add package BlazorWasmPreRendering.Build -v 5.0.0
 cd ..
 # pwd is the {{PROJECT_DIR_ROOT}}
@@ -161,7 +161,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
         <title>PROJECT_NAME</title>
         <base href="/" />
         <link rel="stylesheet" href="css/app.min.css" />
-        <link rel="stylesheet" href="_content/Flowbite/flowbite.min.css" />
+        <link rel="stylesheet" href="_content/AllSpice.Flowbite.Blazor/flowbite.min.css" />
         <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
         <script>
@@ -193,7 +193,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
         </div>
         <script src="_framework/blazor.webassembly.js"></script>
         <script src="/js/app.js"></script>
-        <script src="_content/Flowbite/flowbite.js"></script>
+        <script src="_content/AllSpice.Flowbite.Blazor/flowbite.js"></script>
     </body>
 
 </html>

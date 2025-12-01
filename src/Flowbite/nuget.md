@@ -7,7 +7,7 @@ Flowbite component library for ASP.NET Blazor 8.0, providing a comprehensive set
 1. Install the NuGet package:
 
 ```powershell
-dotnet add package Flowbite.Blazor --prerelease
+dotnet add package AllSpice.Flowbite.Blazor --prerelease
 ```
 
 2. Install TailwindCSS (if not already installed):
@@ -50,7 +50,14 @@ module.exports = {
 }
 ```
 
-4. Add imports to your _Imports.razor:
+4. Add static asset references to your `wwwroot/index.html`:
+
+```html
+<link rel="stylesheet" href="_content/AllSpice.Flowbite.Blazor/flowbite.min.css" />
+<script src="_content/AllSpice.Flowbite.Blazor/flowbite.js"></script>
+```
+
+5. Add imports to your _Imports.razor:
 
 ```razor
 @using Flowbite

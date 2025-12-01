@@ -10,23 +10,23 @@
 <main class="p-6 space-y-4 max-w-4xl">
     <h1 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Bottom Navigation</h1>
     <p class="mb-8 text-gray-500 dark:text-gray-400">
-        Use the bottom navigation component to allow users to navigate through your website or create a control bar using a menu that is positioned at the bottom of the page.
+        Use the bottom navigation component to allow users to navigate through your website or create a control bar
+        using a menu that is positioned at the bottom of the page.
     </p>
 
     <div class="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
-        <ComponentExample 
-            Title="Default Bottom Navigation" 
+        <ComponentExample Title="Default Bottom Navigation"
             Description="Use the default bottom navigation bar to show a list of menu items as buttons to allow the user to navigate through your website."
             RazorCode="@(
-@"<BottomNavigation>
-    <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""true"" />
-    <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" />
-    <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
-    <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
-</BottomNavigation>")"
-            SupportedLanguages="@(new[] { "razor" })">
+            @"<BottomNavigation>
+                <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""true"" />
+                <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" />
+                <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
+                <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
+            </BottomNavigation>")" SupportedLanguages="@(new[] { "razor" })">
             <PreviewContent>
-                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900" style="position: relative;">
+                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
+                    style="position: relative;">
                     <BottomNavigation Fixed="false">
                         <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Active="true" />
                         <BottomNavigationItem Icon="@(new WalletIcon())" Label="Wallet" />
@@ -37,19 +37,17 @@
             </PreviewContent>
         </ComponentExample>
 
-        <ComponentExample 
-            Title="Menu Items with Border" 
-            Description="Use the WithBorder style to add borders between navigation items."
-            RazorCode="@(
-@"<BottomNavigation Style=""BottomNavigationStyle.WithBorder"">
-    <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""true"" />
-    <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" />
-    <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
-    <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
-</BottomNavigation>")"
-            SupportedLanguages="@(new[] { "razor" })">
+        <ComponentExample Title="Menu Items with Border"
+            Description="Use the WithBorder style to add borders between navigation items." RazorCode="@(
+                                                                                            @"<BottomNavigation Style=""BottomNavigationStyle.WithBorder"">
+                                                                                                <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""true"" />
+                                                                                                <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" />
+                                                                                                <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
+                                                                                                <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
+                                                                                            </BottomNavigation>")" SupportedLanguages="@(new[] { "razor" })">
             <PreviewContent>
-                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900" style="position: relative;">
+                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
+                    style="position: relative;">
                     <BottomNavigation Style="BottomNavigationStyle.WithBorder" Fixed="false">
                         <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Active="true" />
                         <BottomNavigationItem Icon="@(new WalletIcon())" Label="Wallet" />
@@ -60,19 +58,17 @@
             </PreviewContent>
         </ComponentExample>
 
-        <ComponentExample 
-            Title="With Links" 
-            Description="Use the Href parameter to make items navigate to different pages."
-            RazorCode="@(
-@"<BottomNavigation>
-    <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Href=""/"" Active=""true"" />
-    <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" Href=""/wallet"" />
-    <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" Href=""/settings"" />
-    <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" Href=""/profile"" />
-</BottomNavigation>")"
-            SupportedLanguages="@(new[] { "razor" })">
+        <ComponentExample Title="With Links"
+            Description="Use the Href parameter to make items navigate to different pages." RazorCode="@(
+                                                                                            @"<BottomNavigation>
+                                                                                                <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Href=""/"" Active=""true"" />
+                                                                                                <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" Href=""/wallet"" />
+                                                                                                <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" Href=""/settings"" />
+                                                                                                <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" Href=""/profile"" />
+                                                                                            </BottomNavigation>")" SupportedLanguages="@(new[] { "razor" })">
             <PreviewContent>
-                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
+                <div
+                    class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900">
                     <BottomNavigation Fixed="false">
                         <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Href="/" Active="true" />
                         <BottomNavigationItem Icon="@(new WalletIcon())" Label="Wallet" Href="/wallet" />
@@ -83,18 +79,16 @@
             </PreviewContent>
         </ComponentExample>
 
-        <ComponentExample 
-            Title="Custom Columns" 
-            Description="Use the Columns parameter to specify the number of items in the navigation bar."
-            RazorCode="@(
-@"<BottomNavigation Columns=""3"">
-    <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""true"" />
-    <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
-    <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
-</BottomNavigation>")"
-            SupportedLanguages="@(new[] { "razor" })">
+        <ComponentExample Title="Custom Columns"
+            Description="Use the Columns parameter to specify the number of items in the navigation bar." RazorCode="@(
+                                                                                                          @"<BottomNavigation Columns=""3"">
+                                                                                                              <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""true"" />
+                                                                                                              <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
+                                                                                                              <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
+                                                                                                          </BottomNavigation>")" SupportedLanguages="@(new[] { "razor" })">
             <PreviewContent>
-                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900" style="position: relative;">
+                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
+                    style="position: relative;">
                     <BottomNavigation Columns="3" Fixed="false">
                         <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Active="true" />
                         <BottomNavigationItem Icon="@(new CogIcon())" Label="Settings" />
@@ -104,56 +98,53 @@
             </PreviewContent>
         </ComponentExample>
 
-        <ComponentExample 
-            Title="With Click Handlers" 
-            Description="Use the OnClick event callback to handle item clicks programmatically."
-            RazorCode="@(
-@"<BottomNavigation>
-    <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""@(_activeItem == 0)"" OnClick=""@(() => _activeItem = 0)"" />
-    <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" Active=""@(_activeItem == 1)"" OnClick=""@(() => _activeItem = 1)"" />
-    <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" Active=""@(_activeItem == 2)"" OnClick=""@(() => _activeItem = 2)"" />
-    <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" Active=""@(_activeItem == 3)"" OnClick=""@(() => _activeItem = 3)"" />
-</BottomNavigation>
+        <ComponentExample Title="With Click Handlers"
+            Description="Use the OnClick event callback to handle item clicks programmatically." RazorCode="@(
+                                                                                                 @"<BottomNavigation>
+                                                                                                     <BottomNavigationItem Icon=""@(new HomeIcon())"" Label=""Home"" Active=""@(_activeItem == 0)"" OnClick=""@(() => _activeItem = 0)"" />
+                                                                                                     <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" Active=""@(_activeItem == 1)"" OnClick=""@(() => _activeItem = 1)"" />
+                                                                                                     <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" Active=""@(_activeItem == 2)"" OnClick=""@(() => _activeItem = 2)"" />
+                                                                                                     <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" Active=""@(_activeItem == 3)"" OnClick=""@(() => _activeItem = 3)"" />
+                                                                                                 </BottomNavigation>
 
-@code {
-    private int _activeItem = 0;
-}")"
-            SupportedLanguages="@(new[] { "razor" })">
+                                                                                                 @code {
+                                                                                                     private int _activeItem = 0;
+                                                                                                 }")" SupportedLanguages="@(new[] { "razor" })">
             <PreviewContent>
-                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900" style="position: relative;">
+                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
+                    style="position: relative;">
                     <BottomNavigation Fixed="false">
-                        <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Active="@(_activeItem == 0)" OnClick="@(() => _activeItem = 0)" />
-                        <BottomNavigationItem Icon="@(new WalletIcon())" Label="Wallet" Active="@(_activeItem == 1)" OnClick="@(() => _activeItem = 1)" />
-                        <BottomNavigationItem Icon="@(new CogIcon())" Label="Settings" Active="@(_activeItem == 2)" OnClick="@(() => _activeItem = 2)" />
-                        <BottomNavigationItem Icon="@(new UserHeadsetIcon())" Label="Profile" Active="@(_activeItem == 3)" OnClick="@(() => _activeItem = 3)" />
+                        <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Active="@(_activeItem == 0)"
+                            OnClick="@(() => _activeItem = 0)" />
+                        <BottomNavigationItem Icon="@(new WalletIcon())" Label="Wallet" Active="@(_activeItem == 1)"
+                            OnClick="@(() => _activeItem = 1)" />
+                        <BottomNavigationItem Icon="@(new CogIcon())" Label="Settings" Active="@(_activeItem == 2)"
+                            OnClick="@(() => _activeItem = 2)" />
+                        <BottomNavigationItem Icon="@(new UserHeadsetIcon())" Label="Profile"
+                            Active="@(_activeItem == 3)" OnClick="@(() => _activeItem = 3)" />
                     </BottomNavigation>
                 </div>
             </PreviewContent>
         </ComponentExample>
 
-        <ComponentExample 
-            Title="Custom Styling" 
-            Description="Apply custom colors and classes to match your design system."
-            RazorCode="@(
-@"<BottomNavigation BackgroundColor=""bg-gray-900"" BorderColor=""border-gray-700"">
-    <BottomNavigationItem Icon=""@(new HomeIcon())"" 
-                          Label=""Home"" 
-                          Active=""true""
-                          ActiveIconColor=""text-blue-400""
-                          ActiveLabelColor=""text-blue-400"" />
-    <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" />
-    <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
-    <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
-</BottomNavigation>")"
-            SupportedLanguages="@(new[] { "razor" })">
+        <ComponentExample Title="Custom Styling"
+            Description="Apply custom colors and classes to match your design system." RazorCode="@(
+                                                                                       @"<BottomNavigation BackgroundColor=""bg-gray-900"" BorderColor=""border-gray-700"">
+                                                                                           <BottomNavigationItem Icon=""@(new HomeIcon())"" 
+                                                                                                                 Label=""Home"" 
+                                                                                                                 Active=""true""
+                                                                                                                 ActiveIconColor=""text-blue-400""
+                                                                                                                 ActiveLabelColor=""text-blue-400"" />
+                                                                                           <BottomNavigationItem Icon=""@(new WalletIcon())"" Label=""Wallet"" />
+                                                                                           <BottomNavigationItem Icon=""@(new CogIcon())"" Label=""Settings"" />
+                                                                                           <BottomNavigationItem Icon=""@(new UserHeadsetIcon())"" Label=""Profile"" />
+                                                                                       </BottomNavigation>")" SupportedLanguages="@(new[] { "razor" })">
             <PreviewContent>
-                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900" style="position: relative;">
+                <div class="relative h-64 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900"
+                    style="position: relative;">
                     <BottomNavigation BackgroundColor="bg-gray-900" BorderColor="border-gray-700" Fixed="false">
-                        <BottomNavigationItem Icon="@(new HomeIcon())" 
-                                              Label="Home" 
-                                              Active="true"
-                                              ActiveIconColor="text-blue-400"
-                                              ActiveLabelColor="text-blue-400" />
+                        <BottomNavigationItem Icon="@(new HomeIcon())" Label="Home" Active="true"
+                            ActiveIconColor="text-blue-400" ActiveLabelColor="text-blue-400" />
                         <BottomNavigationItem Icon="@(new WalletIcon())" Label="Wallet" />
                         <BottomNavigationItem Icon="@(new CogIcon())" Label="Settings" />
                         <BottomNavigationItem Icon="@(new UserHeadsetIcon())" Label="Profile" />
@@ -167,4 +158,3 @@
 @code {
     private int _activeItem = 0;
 }
-

@@ -73,7 +73,7 @@ public partial class BottomNavigation : FlowbiteComponentBase
             classes.Add("absolute");
         }
         
-        classes.Add("bottom-0 left-0 right-0 z-50 w-full h-16");
+        classes.Add("fixed bottom-0 left-0 z-50 w-full h-16 bg-neutral-primary-soft border-t border-default");
 
         // Background color
         if (!string.IsNullOrEmpty(BackgroundColor))

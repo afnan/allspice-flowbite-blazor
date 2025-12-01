@@ -226,7 +226,7 @@ public partial class PromptInput : Flowbite.Base.FlowbiteComponentBase, IAsyncDi
     {
         _module ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
             "import",
-            "./_content/Flowbite/js/promptInput.js");
+            "./_content/AllSpice.Flowbite.Blazor/js/promptInput.js");
     }
 
     private async Task HandleContextTextChangedAsync()

@@ -87,12 +87,12 @@ public partial class BottomNavigationItem : FlowbiteComponentBase
     {
         var classes = new List<string>
         {
-            "flex",
+            "inline-flex",
             "flex-col",
             "items-center",
             "justify-center",
             "px-5",
-            "hover:bg-gray-100",
+            "hover:bg-neutral-secondary-medium",
             "dark:hover:bg-gray-700",
             "group",
             "transition-colors"

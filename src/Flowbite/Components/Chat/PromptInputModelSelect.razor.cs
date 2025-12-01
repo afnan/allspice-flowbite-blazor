@@ -70,7 +70,7 @@ public partial class PromptInputModelSelect : Flowbite.Base.FlowbiteComponentBas
         if (firstRender)
         {
             _dotNetRef = DotNetObjectReference.Create(this);
-            _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Flowbite/js/promptInputModelSelect.js");
+            _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/AllSpice.Flowbite.Blazor/js/promptInputModelSelect.js");
             await _jsModule.InvokeVoidAsync("initialize", _elementRef, _dotNetRef);
         }
 

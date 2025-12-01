@@ -3,11 +3,11 @@
 Write-Host "Using dotnet verison $(dotnet --version)"
 Write-Host "Create NuGet packages in .\nuget-local directory..."
 
-# Build and pack Flowbite.Blazor
+# Build and pack AllSpice.Flowbite.Blazor
 dotnet pack src/Flowbite/Flowbite.csproj -c Release -o nuget-local
 if ($LASTEXITCODE -ne 0) { exit 1 }
 
-# Build and pack Flowbite.Blazor.ExtendedIcons
+# Build and pack AllSpice.Flowbite.Blazor.ExtendedIcons
 dotnet pack src/Flowbite.ExtendedIcons/Flowbite.ExtendedIcons.csproj -c Release -o nuget-local
 if ($LASTEXITCODE -ne 0) { exit 1 }
 
