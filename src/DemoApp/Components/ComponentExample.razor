@@ -26,7 +26,7 @@
         @if (ShowCode)
         {
             <div class="relative">
-                <Tabs OnTabChanged="OnTabChanged" Variant="TabVariant.Underline">
+                <Tabs ActiveIndex="@_selectedTabIndex" ActiveIndexChanged="@HandleTabChanged" Variant="TabVariant.Underline">
                     <TabListContent>
                         @if (RazorCode is not null)
                         {

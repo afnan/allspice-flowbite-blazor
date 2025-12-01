@@ -46,19 +46,19 @@ if [ "$BRANCH" != "main" ]; then
     # Create nuget-local directory if it doesn't exist
     mkdir -p nuget-local
     
-    # Build and pack Flowbite.Blazor
-    echo "Building Flowbite.Blazor..."
+    # Build and pack AllSpice.Flowbite.Blazor
+    echo "Building AllSpice.Flowbite.Blazor..."
     $DOTNET_PATH pack src/Flowbite/Flowbite.csproj -c Release -o nuget-local
     if [ $? -ne 0 ]; then
-        echo "Error: Failed to pack Flowbite.Blazor"
+        echo "Error: Failed to pack AllSpice.Flowbite.Blazor"
         exit 1
     fi
     
-    # Build and pack Flowbite.Blazor.ExtendedIcons
-    echo "Building Flowbite.Blazor.ExtendedIcons..."
+    # Build and pack AllSpice.Flowbite.Blazor.ExtendedIcons
+    echo "Building AllSpice.Flowbite.Blazor.ExtendedIcons..."
     $DOTNET_PATH pack src/Flowbite.ExtendedIcons/Flowbite.ExtendedIcons.csproj -c Release -o nuget-local
     if [ $? -ne 0 ]; then
-        echo "Error: Failed to pack Flowbite.Blazor.ExtendedIcons"
+        echo "Error: Failed to pack AllSpice.Flowbite.Blazor.ExtendedIcons"
         exit 1
     fi
     

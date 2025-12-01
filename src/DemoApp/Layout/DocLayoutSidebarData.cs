@@ -50,7 +50,9 @@ public static class DocLayoutSidebarData
             Title = "Components",
             Items = new List<DocLayoutSidebarItem>
             {
+                new() { Title = "Accordion", Href = "/docs/components/accordion", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Alert", Href = "/docs/components/alert" },
+                new() { Title = "Bottom Navigation", Href = "/docs/components/bottom-navigation", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Avatar", Href = "/docs/components/avatar" },
                 new() { Title = "Badge", Href = "/docs/components/badge" },
                 new() { Title = "Breadcrumb", Href = "/docs/components/breadcrumb" },
@@ -66,6 +68,7 @@ public static class DocLayoutSidebarData
                 new() { Title = "Navbar", Href = "/docs/components/navbar" },
                 new() { Title = "QuickGrid", Href = "/docs/components/quickgrid" },
                 new() { Title = "Sidebar", Href = "/docs/components/sidebar" },
+                new() { Title = "Skeleton", Href = "/docs/components/skeleton", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Spinner", Href = "/docs/components/spinner" },
                 new() { Title = "Table", Href = "/docs/components/table"},
                 new() { Title = "Tabs", Href = "/docs/components/tabs" },

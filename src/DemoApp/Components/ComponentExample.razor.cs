@@ -68,12 +68,56 @@ public partial class ComponentExample : FlowbiteComponentBase
     private string _selectedLanguage = "razor";
 
     /// <summary>
+    /// The currently selected tab index.
+    /// </summary>
+    private int _selectedTabIndex = 0;
+
+    /// <summary>
     /// Called when the component is initialized.
     /// </summary>
     protected override void OnInitialized()
     {
         base.OnInitialized();
         _selectedLanguage = Language;
+    }
+
+    /// <summary>
+    /// Handles tab changes and updates the selected language.
+    /// </summary>
+    private Task HandleTabChanged(int index)
+    {
+        _selectedTabIndex = index;
+        
+        // Map tab index to language based on available code types
+        int tabIndex = 0;
+        if (RazorCode is not null)
+        {
+            if (index == tabIndex++)
+            {
+                _selectedLanguage = "razor";
+                return Task.CompletedTask;
+            }
+        }
+        if (HtmlCode is not null)
+        {
+            if (index == tabIndex++)
+            {
+                _selectedLanguage = "html";
+                return Task.CompletedTask;
+            }
+        }
+        if (CSharpCode is not null)
+        {
+            if (index == tabIndex++)
+            {
+                _selectedLanguage = "csharp";
+                return Task.CompletedTask;
+            }
+        }
+        
+        // Default to razor if no match
+        _selectedLanguage = "razor";
+        return Task.CompletedTask;
     }
 
     /// <summary>

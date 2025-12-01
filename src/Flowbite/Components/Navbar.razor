@@ -1,9 +1,8 @@
-
 @inherits FlowbiteComponentBase
 
-<nav class="@NavbarClasses">
+<nav class="@NavbarClasses" @attributes="AdditionalAttributes">
     <div class="@ContainerClasses">
-        <CascadingValue Value="this">
+        <CascadingValue Value="this" IsFixed="true">
             @ChildContent
         </CascadingValue>
     </div>

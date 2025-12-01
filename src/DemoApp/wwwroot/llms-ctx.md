@@ -1,8 +1,8 @@
-<project title="Flowbite Blazor" summary="A comprehensive Blazor component library that ports the Flowbite React component library to ASP.NET Blazor 8.0. Built on TailwindCSS, it provides strongly-typed Blazor components that implement Flowbite design patterns while maintaining consistency with the React implementation. The library offers a rich set of accessible, dark-mode compatible components with built-in ARIA support.">
+<project title="Flowbite Blazor" summary="An upgraded and maintained Blazor component library that ports the Flowbite React component library to ASP.NET Blazor 10.0. Built on TailwindCSS v4.1.17 and Flowbite v4.0.1, it provides strongly-typed Blazor components that implement Flowbite design patterns while maintaining consistency with the React implementation. This is an upgraded fork of the original flowbite-blazor repository, updated to the latest .NET, Tailwind CSS, and Flowbite versions. The library offers a rich set of accessible, dark-mode compatible components with built-in ARIA support.">
 
 ## Project Links
 
-- [Github Repository](https://github.com/peakflames/flowbite-blazor)
+- [Github Repository](https://github.com/afnan/allspice-flowbite-blazor)
 - [Documenation Site](https://flowbite-blazor.peakflames.org/docs/components/{{COMPONENT_NAME}})
 
 
@@ -2175,7 +2175,7 @@ The sections below provide the exact details.
 # pwd is the {{PROJECT_DIR_ROOT}}
 dotnet new blazorwasm --empty -o {{PROJECT_NAME}}
 cd {{PROJECT_NAME}}
-dotnet add package Flowbite --prerelease
+dotnet add package AllSpice.Flowbite.Blazor --prerelease
 dotnet add package BlazorWasmPreRendering.Build -v 5.0.0
 cd ..
 # pwd is the {{PROJECT_DIR_ROOT}}
@@ -2295,7 +2295,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
         <title>PROJECT_NAME</title>
         <base href="/" />
         <link rel="stylesheet" href="css/app.min.css" />
-        <link rel="stylesheet" href="_content/Flowbite/flowbite.min.css" />
+        <link rel="stylesheet" href="_content/AllSpice.Flowbite.Blazor/flowbite.min.css" />
         <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 
         <script>
@@ -2327,7 +2327,7 @@ static void ConfigureServices(IServiceCollection services, string baseAddress)
         </div>
         <script src="_framework/blazor.webassembly.js"></script>
         <script src="/js/app.js"></script>
-        <script src="_content/Flowbite/flowbite.js"></script>
+        <script src="_content/AllSpice.Flowbite.Blazor/flowbite.js"></script>
     </body>
 
 </html>

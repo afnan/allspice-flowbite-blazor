@@ -12,6 +12,13 @@ public partial class SidebarCollapse
     public bool InitiallyOpen { get; set; }
 
     /// <summary>
+    /// Gets or sets whether to enable smooth slide animations for expand/collapse.
+    /// Default is true.
+    /// </summary>
+    [Parameter]
+    public bool Animate { get; set; } = true;
+
+    /// <summary>
     /// Gets or sets a callback that is invoked when the collapse state changes.
     /// </summary>
     [Parameter]

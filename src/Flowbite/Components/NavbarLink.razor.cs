@@ -110,6 +110,20 @@ public partial class NavbarLink : FlowbiteComponentBase
     public RenderFragment? DropdownContent { get; set; }
 
     /// <summary>
+    /// Custom CSS classes to apply to the dropdown menu container.
+    /// Use this to control rounded corners (e.g., "rounded-base" or "rounded-none"), borders, shadows, etc.
+    /// Note: The link element itself can be styled using the Class parameter inherited from FlowbiteComponentBase.
+    /// </summary>
+    [Parameter]
+    public string? DropdownClass { get; set; }
+
+    /// <summary>
+    /// Custom CSS classes to apply to the dropdown content wrapper (the inner div containing dropdown items).
+    /// </summary>
+    [Parameter]
+    public string? DropdownContentClass { get; set; }
+
+    /// <summary>
     /// Callback for when the link is clicked.
     /// </summary>
     /// <remarks>
@@ -200,7 +214,7 @@ public partial class NavbarLink : FlowbiteComponentBase
     {
         var classes = new List<string>
         {
-            "block py-2 pr-4 pl-3 md:p-0"
+            "block py-2 px-3 rounded"
         };
 
         if (HasDropdown)
@@ -208,19 +222,24 @@ public partial class NavbarLink : FlowbiteComponentBase
             classes.Add("inline-flex items-center");
         }
 
-        if (!Active && !Disabled)
-        {
-            classes.Add("text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent");
-        }
-
         if (Active)
         {
-            classes.Add("text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:text-white");
+            classes.Add("text-white bg-brand md:bg-transparent md:text-fg-brand md:p-0");
+        }
+        else if (!Disabled)
+        {
+            classes.Add("text-heading hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent");
         }
 
         if (Disabled)
         {
-            classes.Add("text-gray-400 hover:cursor-not-allowed");
+            classes.Add("text-gray-400 hover:cursor-not-allowed md:p-0");
+        }
+
+        // Add custom class if provided
+        if (!string.IsNullOrEmpty(Class))
+        {
+            classes.Add(Class);
         }
 
         return CombineClasses(string.Join(" ", classes));
@@ -230,11 +249,30 @@ public partial class NavbarLink : FlowbiteComponentBase
     {
         var classes = new List<string>
         {
-            "absolute z-10 mt-2 w-48 rounded-md shadow-lg",
+            "absolute z-10 mt-2 w-48 rounded-base shadow-lg",
             "bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5",
-            "md:right-0 origin-top-right"
+            "origin-top-left left-0"
         };
 
+        // Add custom dropdown class if provided (can override rounded-base with rounded-none, etc.)
+        if (!string.IsNullOrEmpty(DropdownClass))
+        {
+            classes.Add(DropdownClass);
+        }
+
         return CombineClasses(string.Join(" ", classes));
+    }
+
+    private string GetDropdownContentClasses()
+    {
+        var classes = new List<string> { "py-1" };
+        
+        // Add custom dropdown content class if provided
+        if (!string.IsNullOrEmpty(DropdownContentClass))
+        {
+            classes.Add(DropdownContentClass);
+        }
+
+        return string.Join(" ", classes);
     }
 }

@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     
     <!-- Package Metadata -->
-    <PackageId>Flowbite.ExtendedIcons</PackageId>
+    <PackageId>AllSpice.Flowbite.Blazor.ExtendedIcons</PackageId>
     <Version>0.0.5-alpha</Version>
-    <Authors>Todd Schavey</Authors>
-    <Company>PeakFlames</Company>
+    <Authors>Afnan Bashir</Authors>
+    <Company>AllSpice Technologies</Company>
     <Description>Extended icon set for Flowbite.Blazor, providing additional SVG icons as Blazor components.</Description>
     <PackageTags>blazor;icons;svg;flowbite;ui</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/peakflames/flowbite-blazor</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/afnan/allspice-flowbite-blazor</PackageProjectUrl>
     <PackageReadmeFile>nuget.md</PackageReadmeFile>
     <PackageIcon>favicon.png</PackageIcon>
     
@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0" />
   </ItemGroup>
 
   <ItemGroup>

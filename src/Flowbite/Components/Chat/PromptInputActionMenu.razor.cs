@@ -44,7 +44,7 @@ public partial class PromptInputActionMenu : Flowbite.Base.FlowbiteComponentBase
         if (firstRender)
         {
             _dotNetRef = DotNetObjectReference.Create(this);
-            _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Flowbite/js/promptInputActionMenu.js");
+            _jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/AllSpice.Flowbite.Blazor/js/promptInputActionMenu.js");
             await _jsModule.InvokeVoidAsync("initialize", _elementRef, _dotNetRef);
         }
 

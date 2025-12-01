@@ -1,0 +1,12 @@
+{
+  "name": "sadaqa-erp",
+  "version": "1.0.0",
+  "description": "SADAQA ERP Root",
+  "scripts": {
+    "watch": "npx @tailwindcss/cli -i ./wwwroot/css/tw.css -o ./wwwroot/css/app.css --content \"App.razor\" --content \"./wwwroot/**/*.{razor,html,cshtml,cs}\" --content \"./Layout/**/*.{razor,html,cshtml,cs}\" --content \"./Pages/**/*.{razor,html,cshtml,cs}\" --content \"./Components/**/*.{razor,html,cshtml,cs}\" --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  }
+}

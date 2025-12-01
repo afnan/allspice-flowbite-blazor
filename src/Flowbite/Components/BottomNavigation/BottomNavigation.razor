@@ -1,0 +1,10 @@
+@inherits FlowbiteComponentBase
+
+<div class="@GetNavigationClasses()" style="@GetNavigationStyle()" @attributes="AdditionalAttributes">
+    <div class="@GetContainerClasses()" style="@GetContainerStyle()">
+        <CascadingValue Value="this" IsFixed="true">
+            @ChildContent
+        </CascadingValue>
+    </div>
+</div>
+

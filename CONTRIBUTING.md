@@ -7,7 +7,7 @@ Thank you for your interest in contributing to Flowbite Blazor! This document pr
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/peakflames/flowbite-blazor.git
+   git clone https://github.com/afnan/allspice-flowbite-blazor.git
    cd flowbite-blazor
    ```
 

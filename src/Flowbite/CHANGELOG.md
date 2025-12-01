@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3-beta
+
+- TBD
+
+## 0.1.2-beta
+
+- Fix ToggleSwitch backing color css classes
+
 ## 0.1.1-beta
 
 - Update Timeline component styling to simplify user-styling and bring consistency.

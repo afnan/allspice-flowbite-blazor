@@ -76,7 +76,7 @@ public partial class Conversation : Flowbite.Base.FlowbiteComponentBase, IAsyncD
     {
         _module ??= await JSRuntime.InvokeAsync<IJSObjectReference>(
             "import",
-            "./_content/Flowbite/js/chatConversation.js");
+            "./_content/AllSpice.Flowbite.Blazor/js/chatConversation.js");
     }
 
     /// <inheritdoc />

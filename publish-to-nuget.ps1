@@ -27,18 +27,18 @@ if ($currentBranch -ne "main") {
 Write-Host "Clear all the old nuget-local folder..."
 rm -r -force .\nuget-local
 
-# Build and pack Flowbite.Blazor
-Write-Host "Building and packing Flowbite.Blazor..."
+# Build and pack AllSpice.Flowbite.Blazor
+Write-Host "Building and packing AllSpice.Flowbite.Blazor..."
 dotnet pack src/Flowbite/Flowbite.csproj -c Release -o nuget-local
 if ($LASTEXITCODE -ne 0) { 
-  Write-ErrorAndExit "Error occurred while packing Flowbite.Blazor." 
+  Write-ErrorAndExit "Error occurred while packing AllSpice.Flowbite.Blazor." 
 }
 
-# Build and pack Flowbite.ExtendedIcons
-Write-Host "Building and packing Flowbite.ExtendedIcons..."
+# Build and pack AllSpice.Flowbite.Blazor.ExtendedIcons
+Write-Host "Building and packing AllSpice.Flowbite.Blazor.ExtendedIcons..."
 dotnet pack src/Flowbite.ExtendedIcons/Flowbite.ExtendedIcons.csproj -c Release -o nuget-local
 if ($LASTEXITCODE -ne 0) { 
-  Write-ErrorAndExit "Error occurred while packing Flowbite.ExtendedIcons." 
+  Write-ErrorAndExit "Error occurred while packing AllSpice.Flowbite.Blazor.ExtendedIcons." 
 }
 
 Write-Host "NuGet packages created in nuget-local directory" -ForegroundColor Green
@@ -46,14 +46,14 @@ Write-Host "NuGet packages created in nuget-local directory" -ForegroundColor Gr
 # Publish to NuGet.org
 Write-Host "Publishing Flowbite libraries to NuGet.org..."
 
-# Publish Flowbite.Blazor
-dotnet nuget push .\nuget-local\Flowbite.*.nupkg -s https://api.nuget.org/v3/index.json -k $apiKey --skip-duplicate
+# Publish AllSpice.Flowbite.Blazor
+dotnet nuget push .\nuget-local\AllSpice.Flowbite.Blazor.*.nupkg -s https://api.nuget.org/v3/index.json -k $apiKey --skip-duplicate
 if ($LASTEXITCODE -ne 0) {
-  Write-ErrorAndExit "An error occurred while publishing Flowbite.Blazor."
+  Write-ErrorAndExit "An error occurred while publishing AllSpice.Flowbite.Blazor."
 }
 
-# Publish Flowbite.ExtendedIcons (skip duplicate if exists)
-dotnet nuget push .\nuget-local\Flowbite.ExtendedIcons.*.nupkg -s https://api.nuget.org/v3/index.json -k $apiKey --skip-duplicate
+# Publish AllSpice.Flowbite.Blazor.ExtendedIcons (skip duplicate if exists)
+dotnet nuget push .\nuget-local\AllSpice.Flowbite.Blazor.ExtendedIcons.*.nupkg -s https://api.nuget.org/v3/index.json -k $apiKey --skip-duplicate
 Write-Host "Flowbite libraries published successfully to NuGet.org!" -ForegroundColor Green
 Write-Host ""
 Write-Host "Goto URL https://www.nuget.org/packages?q=flowbite to view the published packages."

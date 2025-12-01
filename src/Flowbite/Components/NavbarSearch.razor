@@ -1,0 +1,56 @@
+@using System
+@using System.Collections.Generic
+@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Components
+@inherits FlowbiteComponentBase
+
+<div class="@CombineClasses("flex items-center")">
+    <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="text" 
+               id="@Id" 
+               class="@CombineClasses("block w-full p-2 pl-10 text-sm border border-default rounded-base bg-neutral-secondary-soft text-heading placeholder-gray-500 focus:ring-2 focus:ring-brand focus:border-brand")"
+               placeholder="@Placeholder"
+               value="@Value"
+               @oninput="HandleInput"
+               @attributes="AdditionalAttributes" />
+    </div>
+</div>
+
+@code {
+    private string Id = Guid.NewGuid().ToString("N");
+
+    /// <summary>
+    /// Placeholder text for the search input.
+    /// </summary>
+    [Parameter]
+    public string? Placeholder { get; set; } = "Search...";
+
+    /// <summary>
+    /// The current value of the search input.
+    /// </summary>
+    [Parameter]
+    public string? Value { get; set; }
+
+    /// <summary>
+    /// Event callback fired when the search value changes.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string?> ValueChanged { get; set; }
+
+    /// <summary>
+    /// Additional attributes to be applied to the input element.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        Value = e.Value?.ToString();
+        await ValueChanged.InvokeAsync(Value);
+    }
+}

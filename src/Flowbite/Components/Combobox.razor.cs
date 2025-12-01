@@ -252,7 +252,7 @@ public partial class Combobox : FlowbiteComponentBase, IAsyncDisposable
             return;
         }
 
-        _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Flowbite/js/combobox.js");
+        _jsModule ??= await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/AllSpice.Flowbite.Blazor/js/combobox.js");
         _dotNetRef ??= DotNetObjectReference.Create(this);
         await _jsModule.InvokeVoidAsync("registerOutsideClick", _instanceId, _rootRef, _dotNetRef);
         _outsideClickRegistered = true;
