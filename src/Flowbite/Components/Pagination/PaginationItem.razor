@@ -1,0 +1,197 @@
+@namespace Flowbite.Components.Pagination
+@inherits FlowbiteComponentBase
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+
+<li>
+    
+    @if (IsEllipsis)
+    {
+        <span class="@GetClasses()" data-testid="flowbite-pagination-ellipsis">
+            @ChildContent
+        </span>
+    }
+    else if (Disabled)
+    {
+        <span class="@GetClasses()" data-testid="flowbite-pagination-item" aria-disabled="true">
+            @if (Icon != null)
+            {
+                <DynamicComponent Type="@((Type)Icon)"  Parameters="@IconParams" />
+            }
+            @ChildContent
+        </span>
+    }
+    else
+    {
+        <a href="@Href"
+           class="@GetClasses()"
+           data-testid="flowbite-pagination-item"
+           @onclick="HandleClick"
+           @onclick:preventDefault
+           aria-current="@(IsActive ? "page" : null)"
+           aria-label="@GetAriaLabel()">
+            @if (Icon != null)
+            {
+                <DynamicComponent Type="@((Type)Icon)" Parameters="@IconParams" />
+            }
+            @ChildContent
+        </a>
+    }
+</li>
+
+@code {
+    private Dictionary<string, object> IconParams => new()
+    {
+        { "class", IconClass },
+        { "aria-hidden", true }
+    };
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public int? PageNumber { get; set; }
+
+    [Parameter]
+    public string Href { get; set; } = "#";
+
+    [Parameter]
+    public bool IsActive { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    public bool IsPrevious { get; set; }
+
+    [Parameter]
+    public bool IsNext { get; set; }
+
+    [Parameter]
+    public bool IsEllipsis { get; set; }
+
+    [Parameter]
+    public object? Icon { get; set; }
+
+    [Parameter]
+    public string IconClass { get; set; } = "w-3 h-3 ms-1 rtl:rotate-180";
+
+    [Parameter]
+    public EventCallback<int?> OnClick { get; set; }
+
+    [Parameter]
+    public PaginationSize Size { get; set; } = PaginationSize.Medium;
+
+    private async Task HandleClick()
+    {
+        if (!Disabled && OnClick.HasDelegate)
+        {
+            await OnClick.InvokeAsync(PageNumber);
+        }
+    }
+
+    private string GetAriaLabel()
+    {
+        if (IsPrevious) return "Go to previous page";
+        if (IsNext) return "Go to next page";
+        if (IsEllipsis) return "More pages";
+        if (PageNumber.HasValue) return $"Go to page {PageNumber}";
+        return string.Empty;
+    }
+
+    private string GetClasses()
+    {
+        var classes = new List<string>();
+
+        // Base classes for ALL items
+        if (IsEllipsis)
+        {
+            classes.AddRange(new[]
+            {
+            "px-3",
+            "h-8",
+            "flex",
+            "items-center",
+            "justify-center",
+            "leading-tight",
+            "text-gray-500",
+            "bg-white",
+            "border",
+            "border-gray-300",
+            "dark:bg-gray-800",
+            "dark:border-gray-700",
+            "dark:text-gray-400"
+        });
+        }
+        else
+        {
+            classes.AddRange(new[]
+            {
+            "flex",
+            "items-center",
+            "justify-center",
+            "px-3",
+            "h-8",
+            "leading-tight",
+            "text-gray-500",
+            "bg-white",
+            "border",
+            "border-gray-300",
+            "hover:bg-gray-100",
+            "hover:text-gray-700",
+            "dark:bg-gray-800",
+            "dark:border-gray-700",
+            "dark:text-gray-400",
+            "dark:hover:bg-gray-700",
+            "dark:hover:text-white"
+        });
+        }
+
+        // SIZE VARIATIONS FOR ALL ITEMS (BOTH ELLIPSIS AND REGULAR)
+        if (Size == PaginationSize.Small)
+        {
+            classes.Remove("h-8");
+            classes.Remove("px-3");
+            classes.AddRange(new[] { "h-6", "px-2", "text-xs" });
+        }
+        else if (Size == PaginationSize.Large)
+        {
+            classes.Remove("h-8");
+            classes.Remove("px-3");
+            classes.AddRange(new[] { "h-10", "px-4", "text-lg" });
+        }
+
+        // Active state (only for non-ellipsis)
+        if (IsActive && !IsEllipsis)
+        {
+            classes.Remove("text-gray-500");
+            classes.Remove("dark:text-gray-400");
+            classes.Remove("hover:bg-gray-100");
+            classes.Remove("hover:text-gray-700");
+            classes.Remove("dark:hover:bg-gray-700");
+            classes.Remove("dark:hover:text-white");
+
+            classes.AddRange(new[]
+            {
+            "text-primary-600",
+            "bg-blue-50",
+            "border-blue-300",
+            "hover:bg-blue-100",
+            "hover:text-blue-700",
+            "dark:border-gray-700",
+            "dark:bg-gray-700",
+            "dark:text-white"
+        });
+        }
+
+        // Disabled state
+        if (Disabled)
+        {
+            classes.RemoveAll(c => c.StartsWith("hover:"));
+            classes.Add("cursor-not-allowed");
+            classes.Add("opacity-50");
+        }
+
+        return CombineClasses(classes.ToArray());
+    }
+}

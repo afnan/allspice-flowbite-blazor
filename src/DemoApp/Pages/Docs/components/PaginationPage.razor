@@ -1,0 +1,276 @@
+﻿@page "/docs/components/pagination"
+@layout DocLayout
+@using Flowbite.Components.Pagination
+@using Flowbite.Components
+@using Flowbite.Icons
+@using DemoApp.Components
+
+<PageTitle>Pagination - Flowbite Blazor</PageTitle>
+
+<main class="p-6 space-y-4 max-w-4xl">
+    <h1 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Pagination</h1>
+    <p class="mb-8 text-gray-500 dark:text-gray-400">
+        Use the pagination component to navigate between pages of content with previous/next buttons and page numbers.
+    </p>
+
+    <div class="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <!-- Example 1: Default Pagination -->
+        <ComponentExample Title="Default Pagination"
+                          Description="Basic pagination with previous/next buttons and page indicators. The component automatically disables previous button on first page and next button on last page."
+                          RazorCode="@(@"<Pagination TotalPages=""10"" CurrentPage=""3"" OnPageChanged=""HandlePageChange"" />
+                          ")"
+                          SupportedLanguages="@(new[] { "razor"})">
+            <PreviewContent>
+                <Pagination TotalPages="10" CurrentPage="3" OnPageChanged="@((page) => HandlePageChange(page))" />
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 2: With Custom Icons -->
+        <ComponentExample Title="With Custom Icons"
+                          Description="Use custom icons for previous/next buttons by passing Icon components. Icons will be displayed alongside the text."
+                          RazorCode="@(@"@using Flowbite.Icons
+
+                          <Pagination TotalPages=""10"" CurrentPage=""3""
+                                      PreviousIcon=""@(new ChevronLeftIcon())""
+                                      NextIcon=""@(new ChevronRightIcon())""
+                                      OnPageChanged=""HandlePageChange"" />
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                @{
+                                object prevIcon = new ChevronLeftIcon();
+                                object nextIcon = new ChevronRightIcon();
+                                }
+                <Pagination TotalPages="10" CurrentPage="3"
+                            PreviousIcon="@prevIcon"
+                            NextIcon="@nextIcon"
+                            OnPageChanged="@((page) => HandlePageChange(page))" />
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 3: Manual Page Items -->
+        <ComponentExample Title="Manual Page Items"
+                          Description="Manually specify page items for custom pagination layouts. You can include page numbers, ellipsis indicators, and set active states."
+                          RazorCode="@(@"
+                          <Pagination TotalPages=""20"" CurrentPage=""5"" OnPageChanged=""HandlePageChange"">
+                              <PaginationItem PageNumber=""1"">1</PaginationItem>
+                              <PaginationItem IsEllipsis=""true"">...</PaginationItem>
+                              <PaginationItem PageNumber=""4"">4</PaginationItem>
+                              <PaginationItem PageNumber=""5"" IsActive=""true"">5</PaginationItem>
+                              <PaginationItem PageNumber=""6"">6</PaginationItem>
+                              <PaginationItem IsEllipsis=""true"">...</PaginationItem>
+                              <PaginationItem PageNumber=""20"">20</PaginationItem>
+                          </Pagination>
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Pagination TotalPages="20" CurrentPage="5" OnPageChanged="@((page) => HandlePageChange(page))">
+                    <PaginationItem PageNumber="1">1</PaginationItem>
+                    <PaginationItem IsEllipsis="true">...</PaginationItem>
+                    <PaginationItem PageNumber="4">4</PaginationItem>
+                    <PaginationItem PageNumber="5" IsActive="true">5</PaginationItem>
+                    <PaginationItem PageNumber="6">6</PaginationItem>
+                    <PaginationItem IsEllipsis="true">...</PaginationItem>
+                    <PaginationItem PageNumber="20">20</PaginationItem>
+                </Pagination>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 4: Different Sizes -->
+        <ComponentExample Title="Different Sizes"
+                          Description="Pagination comes in small, medium (default), and large sizes. Control the size using the Size parameter."
+                          RazorCode="@(@"
+                          <div class=""space-y-4"">
+                              <Pagination TotalPages=""10"" CurrentPage=""3""
+                                          Size=""PaginationSize.Small""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <Pagination TotalPages=""10"" CurrentPage=""3""
+                                          Size=""PaginationSize.Medium""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <Pagination TotalPages=""10"" CurrentPage=""3""
+                                          Size=""PaginationSize.Large""
+                                          OnPageChanged=""HandlePageChange"" />
+                          </div>
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-4">
+                    <Pagination TotalPages="10" CurrentPage="3"
+                                Size="PaginationSize.Small"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <Pagination TotalPages="10" CurrentPage="3"
+                                Size="PaginationSize.Medium"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <Pagination TotalPages="10" CurrentPage="3"
+                                Size="PaginationSize.Large"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 5: Different Alignments -->
+        <ComponentExample Title="Different Alignments"
+                          Description="Align pagination to left, center (default), or right using the Alignment parameter."
+                          RazorCode="@(@"
+                          <div class=""space-y-4"">
+                              <Pagination TotalPages=""10"" CurrentPage=""3""
+                                          Alignment=""PaginationAlignment.Left""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <Pagination TotalPages=""10"" CurrentPage=""3""
+                                          Alignment=""PaginationAlignment.Center""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <Pagination TotalPages=""10"" CurrentPage=""3""
+                                          Alignment=""PaginationAlignment.Right""
+                                          OnPageChanged=""HandlePageChange"" />
+                          </div>
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-4">
+                    <Pagination TotalPages="10" CurrentPage="3"
+                                Alignment="PaginationAlignment.Left"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <Pagination TotalPages="10" CurrentPage="3"
+                                Alignment="PaginationAlignment.Center"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <Pagination TotalPages="10" CurrentPage="3"
+                                Alignment="PaginationAlignment.Right"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 6: Disabled States -->
+        <ComponentExample Title="Disabled States"
+                          Description="Previous/Next buttons are automatically disabled on first/last pages. Individual PaginationItem components can also be disabled."
+                          RazorCode="@(@"
+                          <div class=""space-y-4"">
+                              <Pagination TotalPages=""10"" CurrentPage=""1""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <Pagination TotalPages=""10"" CurrentPage=""5""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <Pagination TotalPages=""10"" CurrentPage=""10""
+                                          OnPageChanged=""HandlePageChange"" />
+                          </div>
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-4">
+                    <Pagination TotalPages="10" CurrentPage="1"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <Pagination TotalPages="10" CurrentPage="5"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <Pagination TotalPages="10" CurrentPage="10"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 7: Without Previous/Next Buttons -->
+        <ComponentExample Title="Without Previous/Next Buttons"
+                          Description="Hide previous/next buttons by setting ShowPreviousNext to false. Useful for simpler pagination interfaces."
+                          RazorCode="@(@"
+                          <Pagination TotalPages=""10"" CurrentPage=""3""
+                                      ShowPreviousNext=""false""
+                                      OnPageChanged=""HandlePageChange"">
+                              <PaginationItem PageNumber=""1"">1</PaginationItem>
+                              <PaginationItem PageNumber=""2"">2</PaginationItem>
+                              <PaginationItem PageNumber=""3"" IsActive=""true"">3</PaginationItem>
+                              <PaginationItem PageNumber=""4"">4</PaginationItem>
+                              <PaginationItem PageNumber=""5"">5</PaginationItem>
+                          </Pagination>
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Pagination TotalPages="10" CurrentPage="3"
+                            ShowPreviousNext="false"
+                            OnPageChanged="@((page) => HandlePageChange(page))">
+                    <PaginationItem PageNumber="1">1</PaginationItem>
+                    <PaginationItem PageNumber="2">2</PaginationItem>
+                    <PaginationItem PageNumber="3" IsActive="true">3</PaginationItem>
+                    <PaginationItem PageNumber="4">4</PaginationItem>
+                    <PaginationItem PageNumber="5">5</PaginationItem>
+                </Pagination>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 8: Custom Text -->
+        <ComponentExample Title="Custom Text"
+                          Description="Customize the text for previous/next buttons using the PreviousText and NextText parameters."
+                          RazorCode="@(@"
+                          <Pagination TotalPages=""10"" CurrentPage=""3""
+                                      PreviousText=""← Previous Page""
+                                      NextText=""Next Page →""
+                                      OnPageChanged=""HandlePageChange"" />
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <Pagination TotalPages="10" CurrentPage="3"
+                            PreviousText="← Previous Page"
+                            NextText="Next Page →"
+                            OnPageChanged="@((page) => HandlePageChange(page))" />
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Example 9: Programmatic Control -->
+        <ComponentExample Title="Programmatic Control"
+                          Description="Control the pagination programmatically using two-way binding with bind-CurrentPage. This allows external controls to manipulate the pagination state."
+                          RazorCode="@(@"
+                          <div class=""space-y-4"">
+                              <Pagination TotalPages=""10"" @bind-CurrentPage=""_currentPage""
+                                          OnPageChanged=""HandlePageChange"" />
+
+                              <div class=""flex gap-2 justify-center"">
+                                  <Button Size=""ButtonSize.Small"" OnClick=""@(() => _currentPage = 1)"">Go to Page 1</Button>
+                                  <Button Size=""ButtonSize.Small"" OnClick=""@(() => _currentPage = 5)"">Go to Page 5</Button>
+                                  <Button Size=""ButtonSize.Small"" OnClick=""@(() => _currentPage = 10)"">Go to Page 10</Button>
+                              </div>
+                              <p class=""text-center"">Current page: @_currentPage</p>
+                          </div>
+
+                          @code {
+                              private int _currentPage = 3;
+                          }
+                          ")"
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-4">
+                    <Pagination TotalPages="10" @bind-CurrentPage="_demoCurrentPage"
+                                OnPageChanged="@((page) => HandlePageChange(page))" />
+
+                    <div class="flex gap-2 justify-center">
+                        <Button Size="ButtonSize.Small" OnClick="@(() => _demoCurrentPage = 1)">Go to Page 1</Button>
+                        <Button Size="ButtonSize.Small" OnClick="@(() => _demoCurrentPage = 5)">Go to Page 5</Button>
+                        <Button Size="ButtonSize.Small" OnClick="@(() => _demoCurrentPage = 10)">Go to Page 10</Button>
+                    </div>
+                    <p class="text-center">Current page: @_demoCurrentPage</p>
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+      
+    </div>
+</main>
+
+@code {
+    private int _demoCurrentPage = 3;
+
+    private void HandlePageChange(int newPage)
+    {
+        // In a real app, you would handle the page change
+        // For demo purposes, we're just logging to console
+        Console.WriteLine($"Page changed to: {newPage}");
+    }
+}
