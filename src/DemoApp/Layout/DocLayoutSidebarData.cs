@@ -76,6 +76,8 @@ public static class DocLayoutSidebarData
                 new() { Title = "Toast", Href = "/docs/components/toast" }, // Add Toast link here
                 new() { Title = "Toolbar", Href = "/docs/components/toolbar", Status = DocLayoutSidebarItem.StatusType.New },
                 new() { Title = "Tooltip", Href = "/docs/components/tooltip" },
+                 new() { Title = "Progress Bar", Href = "/docs/components/progress-bar", Status = DocLayoutSidebarItem.StatusType.New },
+            
             }
         },
         new DocLayoutSidebarSection

@@ -2,24 +2,23 @@
 @using Flowbite.Components
 @using Flowbite.Layout
 
-<div class="bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
-    <div class="w-full min-w-0 flex-auto">
-        <div class="relative">
-            <DocLayoutNavbar IsCollapsed="@_isCollapsed" OnToggleCollapse="@HandleToggleCollapse" />
-            
-            <div class="mx-auto w-full max-w-8xl lg:flex lg:px-4">
-                <DocLayoutSidebar IsCollapsed="@_isCollapsed" OnToggleCollapse="@HandleToggleCollapse" />
-                <div class="w-full min-w-0">
-                    @Body
-                </div>
-            </div>
+<div class="bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400 min-h-screen flex flex-col">
+    <DocLayoutNavbar IsCollapsed="@_isCollapsed" OnToggleCollapse="@HandleToggleCollapse" />
 
-            <DocLayoutFooter />
+    <div class="mx-auto w-full lg:flex flex-grow">
+        <div class="lg:w-64 lg:flex-shrink-0 ml-6">
+            <DocLayoutSidebar IsCollapsed="@_isCollapsed" OnToggleCollapse="@HandleToggleCollapse" />
+        </div>
+
+        <div class="w-full min-w-0 px-4 sm:px-6 lg:px-8">
+            <main class="pb-8">
+                @Body
+            </main>
         </div>
     </div>
+    <DocLayoutFooter />
 </div>
-
-<ToastHost /> @* Add the ToastHost component here *@
+<ToastHost />
 
 @code {
     private bool _isCollapsed = true;

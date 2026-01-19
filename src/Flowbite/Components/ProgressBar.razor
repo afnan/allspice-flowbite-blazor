@@ -1,0 +1,55 @@
+﻿@inherits FlowbiteComponentBase
+
+<div class="@GetProgressBarClasses()" role="progressbar"
+     aria-valuenow="@Value" aria-valuemin="0" aria-valuemax="100">
+    @if (ShowLabel && LabelPos == LabelPosition.Above)
+    {
+        <div class="@GetLabelClasses()">
+            @if (!string.IsNullOrEmpty(Label))
+            {
+                <span>@Label</span>
+            }
+            @if (ShowPercentage)
+            {
+                <span>@Value%</span>
+            }
+        </div>
+    }
+
+    <div class="@GetTrackClasses()">
+        <div class="@GetFillClasses()" style="width: @(Value)%;">
+            @if (ShowLabel && LabelPos == LabelPosition.Inside)
+            {
+                <div class="@GetInsideLabelClasses()">
+                    @if (!string.IsNullOrEmpty(Label))
+                    {
+                        <span>@Label</span>
+                    }
+                    @if (ShowPercentage)
+                    {
+                        <span>@Value%</span>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (ShowLabel && LabelPos == LabelPosition.Below)
+    {
+        <div class="@GetLabelClasses()">
+            @if (!string.IsNullOrEmpty(Label))
+            {
+                <span>@Label</span>
+            }
+            @if (ShowPercentage)
+            {
+                <span>@Value%</span>
+            }
+        </div>
+    }
+</div>
+
+@if (ChildContent != null)
+{
+    <div>@ChildContent</div>
+}

@@ -1,27 +1,24 @@
-
-
 <div class="@(_baseClasses) @(IsCollapsed ? "hidden" : "")"
      style="height: calc(100vh - 61px)">
     <nav aria-label="Docs navigation"
-         class="px-1 pb-8 pl-3 pt-16 text-base font-normal lg:pl-0 lg:pt-2 lg:text-sm">
-        <ul>
+         class="pb-8 pt-16 text-base font-normal lg:pt-2 lg:text-sm">
+        <ul class="list-none p-0 m-0">
             @foreach (var sectionData in DocLayoutSidebarData.Sections)
             {
-                <li class="mt-8">
-                    <h5 class="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-900 lg:text-xs dark:text-white">
+                <li class="mt-6">
+                    <h5 class="mb-2 px-0 text-sm font-semibold uppercase tracking-wide text-gray-900 lg:text-xs dark:text-white">
                         @sectionData.Title
                     </h5>
-                    <ul class="py-1">
+                    <ul class="py-1 list-none p-0 m-0">
                         @foreach (var item in sectionData.Items)
                         {
                             <li>
-                                <NavLink 
-                                        href="@item.Href" 
-                                        target="@(item.IsExternal ? "_blank" : null)"
-                                        class="side-bar-item"
-                                        ActiveClass="bg-primary-50 dark:bg-primary-900"
-                                        Match="NavLinkMatch.All"
-                                        @onclick="HandleItemClick">
+                                <NavLink href="@item.Href"
+                                         target="@(item.IsExternal ? "_blank" : null)"
+                                         class="side-bar-item"
+                                         ActiveClass="bg-primary-50 dark:bg-primary-900 !text-primary-700 dark:!text-primary-500"
+                                         Match="NavLinkMatch.All"
+                                         @onclick="HandleItemClick">
                                     @if (item.Status is not DocLayoutSidebarItem.StatusType.None)
                                     {
                                         <span class="flex items-center gap-2">
@@ -56,7 +53,7 @@
 @code 
 {
     private readonly string _baseClasses = "fixed inset-0 z-50 size-full max-w-64 overflow-y-auto bg-white lg:sticky lg:top-[61px] lg:block dark:bg-gray-900";
-
+    
     [Parameter]
     public bool IsCollapsed { get; set; }
 

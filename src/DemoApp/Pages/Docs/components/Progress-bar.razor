@@ -1,0 +1,190 @@
+﻿@page "/docs/components/progress-bar"
+
+@using Flowbite.Components
+@layout DocLayout
+
+<PageTitle>Progress Bar - Flowbite Blazor</PageTitle>
+
+<main class="p-6 space-y-4 max-w-4xl">
+    <h2>Progress Bar Examples</h2>
+    <p class="text-lg text-gray-500 dark:text-gray-400">
+        The Progress Bar component displays the completion percentage of a task with customizable colors, sizes, labels, and animations.
+    </p>
+
+    <div class="space-y-8 divide-y divide-gray-200 dark:divide-gray-700">
+        <!-- Default -->
+        <ComponentExample Title="Default Progress Bar"
+                          Description="Create a basic progress bar with a percentage value."
+                          RazorCode=@(@"
+  <ProgressBar Value=""25"" />")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <ProgressBar Value="25" />
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- With Label -->
+        <ComponentExample Title="Progress Bar with Label"
+                          Description="Add a descriptive label to your progress bar."
+                          RazorCode=@(@"
+   <ProgressBar Value=""60"" Label=""File Upload"" />")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <ProgressBar Value="60" Label="File Upload" />
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Professional Color Palette -->
+        <ComponentExample Title="Professional Color Palette"
+                          Description="Progress bars with Flowbite's professional color scheme."
+                          RazorCode=@(@"
+   <div class=""grid grid-cols-1 md:grid-cols-2 gap-4"">
+   <ProgressBar Value=""30"" Color=""ProgressColor.Blue"" Label=""Blue"" />
+   <ProgressBar Value=""40"" Color=""ProgressColor.Green"" Label=""Green"" />
+   <ProgressBar Value=""50"" Color=""ProgressColor.Red"" Label=""Red"" />
+   <ProgressBar Value=""60"" Color=""ProgressColor.Yellow"" Label=""Yellow"" />
+   <ProgressBar Value=""70"" Color=""ProgressColor.Purple"" Label=""Purple"" />
+   <ProgressBar Value=""80"" Color=""ProgressColor.Pink"" Label=""Pink"" />
+   <ProgressBar Value=""90"" Color=""ProgressColor.Indigo"" Label=""Indigo"" />
+   <ProgressBar Value=""100"" Color=""ProgressColor.Teal"" Label=""Teal"" />
+   </div>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <ProgressBar Value="30" Color="ProgressColor.Blue" Label="Blue" />
+                    <ProgressBar Value="40" Color="ProgressColor.Green" Label="Green" />
+                    <ProgressBar Value="50" Color="ProgressColor.Red" Label="Red" />
+                    <ProgressBar Value="60" Color="ProgressColor.Yellow" Label="Yellow" />
+                    <ProgressBar Value="70" Color="ProgressColor.Purple" Label="Purple" />
+                    <ProgressBar Value="80" Color="ProgressColor.Pink" Label="Pink" />
+                    <ProgressBar Value="90" Color="ProgressColor.Indigo" Label="Indigo" />
+                    <ProgressBar Value="100" Color="ProgressColor.Teal" Label="Teal" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Contextual Colors -->
+        <ComponentExample Title="Contextual Usage"
+                          Description="Use appropriate colors for different contexts."
+                          RazorCode=@(@"
+ <div class=""space-y-4"">
+ <ProgressBar Value=""90"" Color=""ProgressColor.Green"" Label=""Success: Task Completed"" />
+ <ProgressBar Value=""60"" Color=""ProgressColor.Blue"" Label=""Info: In Progress"" />
+ <ProgressBar Value=""40"" Color=""ProgressColor.Yellow"" Label=""Warning: Almost Full"" />
+ <ProgressBar Value=""25"" Color=""ProgressColor.Red"" Label=""Error: Low Space"" />
+ <ProgressBar Value=""75"" Color=""ProgressColor.Purple"" Label=""Premium: Pro Feature"" />
+ </div>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-4">
+                    <ProgressBar Value="90" Color="ProgressColor.Green" Label="Success: Task Completed" />
+                    <ProgressBar Value="60" Color="ProgressColor.Blue" Label="Info: In Progress" />
+                    <ProgressBar Value="40" Color="ProgressColor.Yellow" Label="Warning: Almost Full" />
+                    <ProgressBar Value="25" Color="ProgressColor.Red" Label="Error: Low Space" />
+                    <ProgressBar Value="75" Color="ProgressColor.Purple" Label="Premium: Pro Feature" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+      
+
+        <!-- All Sizes -->
+        <ComponentExample Title="Size Variants"
+                          Description="Progress bars in all available sizes."
+                          RazorCode=@(@"
+  <div class=""space-y-6"">
+  <ProgressBar Value=""20"" Size=""ProgressSize.ExtraSmall"" Label=""Extra Small"" />
+  <ProgressBar Value=""40"" Size=""ProgressSize.Small"" Label=""Small"" />
+  <ProgressBar Value=""60"" Size=""ProgressSize.Medium"" Label=""Medium"" />
+  <ProgressBar Value=""80"" Size=""ProgressSize.Large"" Label=""Large"" />
+  <ProgressBar Value=""100"" Size=""ProgressSize.ExtraLarge"" Label=""Extra Large"" />
+  </div>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-6">
+                    <ProgressBar Value="20" Size="ProgressSize.ExtraSmall" Label="Extra Small" />
+                    <ProgressBar Value="40" Size="ProgressSize.Small" Label="Small" />
+                    <ProgressBar Value="60" Size="ProgressSize.Medium" Label="Medium" />
+                    <ProgressBar Value="80" Size="ProgressSize.Large" Label="Large" />
+                    <ProgressBar Value="100" Size="ProgressSize.ExtraLarge" Label="Extra Large" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Label Positions -->
+        <ComponentExample Title="Label Positioning"
+                          Description="Different ways to position labels relative to the progress bar."
+                          RazorCode=@(@"
+  <div class=""space-y-6"">
+  <ProgressBar Value=""25"" Label=""Label Above"" LabelPos=""LabelPosition.Above"" />
+  <ProgressBar Value=""50"" Label=""Label Inside"" LabelPos=""LabelPosition.Inside"" />
+  <ProgressBar Value=""75"" Label=""Label Below"" LabelPos=""LabelPosition.Below"" />
+  </div>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-6">
+                    <ProgressBar Value="25" Label="Label Above" LabelPos="LabelPosition.Above" />
+                    <ProgressBar Value="50" Label="Label Inside" LabelPos="LabelPosition.Inside" />
+                    <ProgressBar Value="75" Label="Label Below" LabelPos="LabelPosition.Below" />
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+
+        <!-- Practical Examples -->
+        <ComponentExample Title="Real-world Examples"
+                          Description="Common use cases for progress bars in applications."
+                          RazorCode=@(@"
+ <div class=""space-y-6"">
+ <div>
+ <ProgressBar Value=""85""
+ Label=""Storage Usage""
+ Color=""ProgressColor.Blue""
+ Striped=""true"" />
+ <p class=""text-sm text-gray-600 mt-2"">85% used • 42.5 GB of 50 GB</p>
+ </div>
+ <div>
+ <ProgressBar Value=""60""
+ Label=""Profile Completion""
+ Color=""ProgressColor.Green""
+ Size=""ProgressSize.Small"" />
+ <p class=""text-sm text-gray-600 mt-2"">Complete your profile to unlock features</p>
+ </div>
+ <div>
+ <ProgressBar Value=""95""
+ Label=""CPU Usage""
+ Color=""ProgressColor.Red""
+ LabelPos=""LabelPosition.Inside"" />
+ <p class=""text-sm text-gray-600 mt-2"">High usage detected</p>
+ </div>
+ </div>")
+                          SupportedLanguages="@(new[] { "razor" })">
+            <PreviewContent>
+                <div class="space-y-6">
+                    <div>
+                        <ProgressBar Value="85"
+                                     Label="Storage Usage"
+                                     Color="ProgressColor.Blue"
+                                     Striped="true" />
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">85% used • 42.5 GB of 50 GB</p>
+                    </div>
+
+                    <div>
+                        <ProgressBar Value="60"
+                                     Label="Profile Completion"
+                                     Color="ProgressColor.Green"
+                                     Size="ProgressSize.Small" />
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Complete your profile to unlock features</p>
+                    </div>
+
+                    <div>
+                        <ProgressBar Value="95"
+                                     Label="CPU Usage"
+                                     Color="ProgressColor.Red"
+                                     LabelPos="LabelPosition.Inside" />
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">High usage detected</p>
+                    </div>
+                </div>
+            </PreviewContent>
+        </ComponentExample>
+    </div>
+</main>

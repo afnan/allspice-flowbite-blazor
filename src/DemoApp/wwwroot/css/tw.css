@@ -107,10 +107,11 @@ main > h2,
 /* COMPONENTS --------------------------------------------------------------------------------------------------------------------------- */
 
 .side-bar-item {
-    @apply px-3 rounded-lg flex flex-wrap items-center py-2 text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white;
+  
+    @apply px-10 rounded-lg flex items-center py-2 text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white transition-colors whitespace-nowrap overflow-hidden text-ellipsis;
+    width: 100%;
 }
 
-/* Reset h2 styles inside Accordion components - must override global h2 */
 .flowbite-accordion h2 {
     font-size: 1rem !important;
     font-weight: 500 !important;
@@ -124,5 +125,32 @@ main > h2,
     font-size: 1rem !important;
     font-weight: 500 !important;
     line-height: 1.5rem !important;
+}
+
+html, body {
+    height: 100%;
+}
+
+@media (min-width: 1024px) {
+    .lg\:sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 61px;
+        align-self: flex-start;
+    }
+
+    .lg\:h-\[calc\(100vh-61px\)\] {
+        height: calc(100vh - 61px);
+        max-height: calc(100vh - 61px);
+        overflow-y: auto;
+    }
+
+        .lg\:h-\[calc\(100vh-61px\)\] nav {
+            padding-bottom: 1rem;
+        }
+}
+
+.w-full.min-w-0 {
+    min-width: 0;
 }
 
